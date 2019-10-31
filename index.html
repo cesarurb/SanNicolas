@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="es" ng-app>
+<html lang="es" ng-app="mySGAApp">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -28,8 +28,17 @@
     <link href="app/css/theme.css" rel="stylesheet" media="all">
 
     <script src="app/lib/angular.min.js"></script>
+    <script src="app/lib/angular-route.min.js"></script>
+    <script src="app/lib/angular-ui.router.stateHelper.js"></script>
+    <script src="app/lib/angular-cookies.min.js" charset="utf-8"></script>
+    <script src="app/lib/sweetalert.min.js"></script>
+    <script src="app/lib/ui-bootstrap-tpls-2.5.0.min.js" charset="utf-8"></script>
+    <script src="app/lib/jquery-3.4.1.min.js" charset="utf-8"></script>
+    <script src="app/app.js"></script>
+    <script src="app/SGA/raiz.ctrl.js"></script>
   </head>
-  <body class="animsition">
+  <body class="animsition" ng-controller="SGAController as Controller">
+    ua ua
     <div ui-view></div>
 
 

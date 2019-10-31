@@ -1,4 +1,6 @@
-var mySGAApp = angular.module("mySGAApp", ['ui.router','ui.router.stateHelper', 'ngCookies', 'ui.bootstrap', 'ngTable']);
+var mySGAApp = angular.module("mySGAApp", ['ui.router','ui.router.stateHelper'
+// , 'ngCookies', 'ui.bootstrap', 'ngTable'
+]);
 
 mySGAApp.config(['stateHelperProvider', '$urlRouterProvider', '$qProvider', function(stateHelperProvider, $urlRouterProvider, $qProvider){
   // $qProvider.errorOnUnhandledRejections(false);
@@ -9,11 +11,11 @@ mySGAApp.config(['stateHelperProvider', '$urlRouterProvider', '$qProvider', func
     templateUrl: 'app/SGA/raiz.html',
     controller: 'raizCtrl as RCtrl',
     children:[
-      {
-        name: 'administrador',
-        url: '/administrador',
-        templateUrl: 'app/SGA/administrador/administrador.html',
-        children: [
+      // {
+      //   name: 'administrador',
+      //   url: '/administrador',
+      //   templateUrl: 'app/SGA/administrador/administrador.html',
+      //   children: [
           {
             name: 'homeAdmin',
             url: '/homeAdmin',
@@ -59,10 +61,10 @@ mySGAApp.config(['stateHelperProvider', '$urlRouterProvider', '$qProvider', func
               //   url: '/matrizVer/:empresaID',
               //   templateUrl: 'app/SGA/administrador/empresas/matrizFoda/matrizFodaLectura.html',
               //   controller: 'matrizFodaCtrl as MFCtrl'
-              }
-            ]
-          }
-        ]
+            //   }
+            // ]
+        //   }
+        // ]
       // },
       // {
       //   name: 'coordinador',
@@ -121,9 +123,10 @@ mySGAApp.config(['stateHelperProvider', '$urlRouterProvider', '$qProvider', func
   //   templateUrl: 'app/SGA/login/login.html',
   //   controller: 'loginCtrl as ctrl'
   // });
-  // $urlRouterProvider.otherwise("/login");
+  $urlRouterProvider.otherwise("/homeAdmin");
 }]);
 
 mySGAApp.controller("SGAController", ['$scope', function($scope){
   var ctrl = this;
+  console.log("entró")
 }]);

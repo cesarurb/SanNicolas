@@ -1,4 +1,4 @@
-angular.module('myPESIApp').controller('raizCtrl', ['$scope', '$state', '$cookies', '$location',
+angular.module('mySGAApp').controller('raizCtrl', ['$scope', '$state', '$cookies', '$location',
 
 function($scope, $state, $cookies, $location){
   var ctrl = this;
@@ -55,7 +55,7 @@ function($scope, $state, $cookies, $location){
   }
 
   ctrl.init = function () {
-    // console.log(ctrl.usuario);
+    console.log(ctrl.usuario);
     if (inicioSesion == 'false') {
       $state.go('login');
     } else {
