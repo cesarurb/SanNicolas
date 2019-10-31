@@ -1,0 +1,39 @@
+<br><br><br>
+<section id="login" class="mb-5">
+  <div ng-controller="loginCtrl as ctrl">
+    <div class="container">
+      <div class="row">
+        <div class="col-xs-12 col-sm-6 col-md-4 mx-auto">
+          <div class="card_register">
+            <div class="card">
+              <div class="card-header">
+                <div class="row-md-12" align="center">
+                    <h2>BIENVENIDOS</h2>
+                </div>
+              </div>
+              <div class="card-body text-center">
+                <form id="loginForm" class="ng-pristine ng-valid">
+                  <h1 class="h3 mb-3 font-weight-normal">LOGIN</h1>
+                  <div class="form-group">
+                    <input type="text" id="user" name="user" class="form-control" placeholder="Usuario" ng-model="username" required>
+                  </div>
+                  <div class="form-group">
+                    <input type="password" id="password" name="password" class="form-control" placeholder="Contraseña" ng-model="password" required>
+                  </div>
+                  <div class="form-group">
+                    <label class="form-control"><input type="checkbox" class="" name="box" id="box">Recordar cuenta</label>
+                  </div>
+                  <button class="btn btn-lg btn-primary btn-block"ng-click="login()">Acceder</button>
+                  <div class="form-group">
+                    <a href="" class="form-control login-user">Contactar administrador</a>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<br><br><br>
