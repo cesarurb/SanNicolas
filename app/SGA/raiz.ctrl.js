@@ -1,6 +1,6 @@
-angular.module('mySGAApp').controller('raizCtrl', ['$scope', '$state', '$cookies', '$location',
+angular.module('mySGAApp').controller('raizCtrl', ['$scope', '$state', '$cookies', '$location','$mdSidenav',
 
-function($scope, $state, $cookies, $location){
+function($scope, $state, $cookies, $location, $mdSidenav){
   var ctrl = this;
   ctrl.usuario = {
     userID: $cookies.get('usuarioID'),
@@ -44,14 +44,26 @@ function($scope, $state, $cookies, $location){
     }
   }
 
+  ctrl.irLogin = function() {
+    $state.go('login');
+  }
+
   ctrl.irHome = function() {
-    if ($cookies.get('rol') == 'COORDINADOR') {
-      $state.go('gestionEmpleados');
-    } else if ($cookies.get('rol') == 'EMPLEADO') {
-      $state.go('homeEmpleado');
-    } else {
-      $state.go('homeAdmin');
-    }
+    // if ($cookies.get('rol') == 'COORDINADOR') {
+    //   $state.go('gestionEmpleados');
+    // } else if ($cookies.get('rol') == 'EMPLEADO') {
+    //   $state.go('homeEmpleado');
+    // } else {
+    //   $state.go('homeAdmin');
+    // }
+    $state.go('home');
+  }
+
+  $scope.toggleSidenav = buildToggler('closeEventsDisabled');
+  function buildToggler(componentId) {
+    return function() {
+      $mdSidenav(componentId).toggle();
+    };
   }
 
   ctrl.init = function () {

@@ -5,15 +5,15 @@
   if(!isset($_POST)) die();
 
   session_start();
-  //
+
   $response = [];
   $json_array = array();
   $username = $_POST['username'];
   $password = $_POST['password'];
 
-  $con = mysqli_connect('127.0.0.1', 'root', '', 'APROBANDO_PESI') or die ( "Upps! Pues va a ser que no se ha podido conectar a la base de datos" );
+  $con = mysqli_connect('127.0.0.1', 'root', '', 'siad') or die ( "Upps! Pues va a ser que no se ha podido conectar a la base de datos" );
   $tildes = $con->query("SET NAMES 'utf8'"); //Para que se muestren las tildes correctamente
-  $query = "select * from usuario where name_user = '$username' and pass_word = '$password'";
+  $query = "select * from usuarios where NombreUsuario = '$username' and PassUsuario = '$password'";
   // $query = "select * from usuario";
   //
   $result = mysqli_query($con, $query) or die ( "Algo ha ido mal en la consulta a la base de datos");

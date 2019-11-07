@@ -1,8 +1,6 @@
-var mySGAApp = angular.module("mySGAApp", ['ui.router','ui.router.stateHelper'
-// , 'ngCookies', 'ui.bootstrap', 'ngTable'
-]);
+var mySGAApp = angular.module("mySGAApp", ['ui.router','ui.router.stateHelper', 'ngCookies', 'ui.bootstrap', 'ngTable', 'ngMaterial', 'ngMessages']);
 
-mySGAApp.config(['stateHelperProvider', '$urlRouterProvider', '$qProvider', function(stateHelperProvider, $urlRouterProvider, $qProvider){
+mySGAApp.config(['stateHelperProvider', '$urlRouterProvider', function(stateHelperProvider, $urlRouterProvider){
   // $qProvider.errorOnUnhandledRejections(false);
   stateHelperProvider
   .state({
@@ -11,15 +9,16 @@ mySGAApp.config(['stateHelperProvider', '$urlRouterProvider', '$qProvider', func
     templateUrl: 'app/SGA/raiz.html',
     controller: 'raizCtrl as RCtrl',
     children:[
-      // {
-      //   name: 'administrador',
-      //   url: '/administrador',
-      //   templateUrl: 'app/SGA/administrador/administrador.html',
-      //   children: [
-          {
-            name: 'homeAdmin',
-            url: '/homeAdmin',
-            templateUrl: 'app/SGA/administrador/home/home.html'
+      {
+        name: 'administrador',
+        url: '/administrador',
+        templateUrl: 'app/SGA/administrador/administrador.html'
+        // ,
+        // children: [
+        //   {
+        //     name: 'homeAdmin',
+        //     url: '/homeAdmin',
+        //     templateUrl: 'app/SGA/administrador/home/home.html'
           // },
           // {
           //   name: 'gestionUsuarios',
@@ -65,11 +64,12 @@ mySGAApp.config(['stateHelperProvider', '$urlRouterProvider', '$qProvider', func
             // ]
         //   }
         // ]
-      // },
-      // {
-      //   name: 'coordinador',
-      //   url: '/coordinador',
-      //   templateUrl: 'app/SGA/coordinador/coordinador.html',
+      },
+      {
+        name: 'home',
+        url: '/home',
+        templateUrl: 'app/SGA/home/home.html',
+        controller: 'homeCtrl as HCtrl'
       //   children: [
       //     {
       //       name: 'homeCoordinador',
@@ -117,16 +117,15 @@ mySGAApp.config(['stateHelperProvider', '$urlRouterProvider', '$qProvider', func
       }
     ]
   }, { keepOriginalNames: true })
-  // .state({
-  //   name: 'login',
-  //   url: '/login',
-  //   templateUrl: 'app/SGA/login/login.html',
-  //   controller: 'loginCtrl as ctrl'
-  // });
-  $urlRouterProvider.otherwise("/homeAdmin");
+  .state({
+    name: 'login',
+    url: '/login',
+    templateUrl: 'app/SGA/login/login.html',
+    controller: 'loginCtrl as LCtrl'
+  });
+  $urlRouterProvider.otherwise("/raiz/home");
 }]);
 
 mySGAApp.controller("SGAController", ['$scope', function($scope){
   var ctrl = this;
-  console.log("entró")
 }]);
