@@ -12,13 +12,13 @@ mySGAApp.config(['stateHelperProvider', '$urlRouterProvider', function(stateHelp
       {
         name: 'administrador',
         url: '/administrador',
-        templateUrl: 'app/SGA/administrador/administrador.html'
-        // ,
-        // children: [
-        //   {
-        //     name: 'homeAdmin',
-        //     url: '/homeAdmin',
-        //     templateUrl: 'app/SGA/administrador/home/home.html'
+        templateUrl: 'app/SGA/administrador/administrador.html',
+        children: [
+          {
+            name: 'registrar-alumno',
+            url: '/registrarAlumno',
+            templateUrl: 'app/SGA/administrador/gestionAlumnos/registrarAlumnos.html',
+            controller: 'gestorAlumnosCtrl as GACtrl',
           // },
           // {
           //   name: 'gestionUsuarios',
@@ -62,8 +62,8 @@ mySGAApp.config(['stateHelperProvider', '$urlRouterProvider', function(stateHelp
               //   controller: 'matrizFodaCtrl as MFCtrl'
             //   }
             // ]
-        //   }
-        // ]
+          }
+        ]
       },
       {
         name: 'home',
@@ -123,7 +123,7 @@ mySGAApp.config(['stateHelperProvider', '$urlRouterProvider', function(stateHelp
     templateUrl: 'app/SGA/login/login.html',
     controller: 'loginCtrl as LCtrl'
   });
-  $urlRouterProvider.otherwise("/raiz/home");
+  $urlRouterProvider.otherwise("/raiz/administrador/registrarAlumno");
 }]);
 
 mySGAApp.controller("SGAController", ['$scope', function($scope){

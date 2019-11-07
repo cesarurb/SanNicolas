@@ -1,0 +1,164 @@
+<div class="row">
+  <div class="col-md-12">
+    <div class="card">
+      <div class="card-header">
+        <h1>REGISTRAR ALUMNO NUEVO</h1>
+      </div>
+      <div class="card-body">
+        <div class="card">
+          <div class="card-header">
+            <h2>Datos del alumno</h2>
+          </div>
+          <div class="card-body">
+            <div class="row">
+              <div class="col-sm-6">
+                <div class="form-group">
+                  <label class="label-letra-prometeo col-sm-4 control-label m-t-10 m-b-0">Nombres<strong class="text-danger">*</strong>: </label>
+                  <div class="col-sm-10">
+                    <div class="fg-line">
+                      <input class="form-control input-sm" placeholder="Ingrese los nombres del alumno" ng-model = "GACtrl.alumnoNuevo.nombres">
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-sm-6">
+                <div class="form-group">
+                  <label class="label-letra-prometeo col-sm-4 control-label m-t-10 m-b-0">Apellidos<strong class="text-danger">*</strong>: </label>
+                  <div class="col-sm-10">
+                    <div class="fg-line">
+                      <input class="form-control input-sm" placeholder="Ingrese los apellidos del alumno" ng-model = "GACtrl.alumnoNuevo.apellidos">
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-sm-6">
+                <div class="form-group">
+                  <label class="label-letra-prometeo col-sm-4 control-label m-t-10 m-b-0">DNI<strong class="text-danger">*</strong>: </label>
+                  <div class="col-sm-10">
+                    <div class="fg-line">
+                      <input class="form-control input-sm" placeholder="Ingrese el DNI del alumno" ng-model = "GACtrl.alumnoNuevo.dni">
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-sm-6">
+                <div class="form-group">
+                  <label class="label-letra-prometeo col-sm-4 control-label m-t-10 m-b-0">Correo<strong class="text-danger">*</strong>: </label>
+                  <div class="col-sm-10">
+                    <div class="fg-line">
+                      <input class="form-control input-sm" placeholder="Ingrese el correo del alumno" ng-model = "GACtrl.alumnoNuevo.correo">
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-sm-6">
+                <div class="form-group">
+                  <label class="label-letra-prometeo col-sm-4 control-label m-t-10 m-b-0">Tel&eacute;fono<strong class="text-danger">*</strong>: </label>
+                  <div class="col-sm-10">
+                    <div class="fg-line">
+                      <input class="form-control input-sm" placeholder="Ingrese el teléfono del alumno" ng-model = "GACtrl.alumnoNuevo.telefono">
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-sm-6">
+                <div class="form-group">
+                  <label class="label-letra-prometeo col-sm-4 control-label m-t-10 m-b-0">Direcci&oacute;n<strong class="text-danger">*</strong>: </label>
+                  <div class="col-sm-10">
+                    <div class="fg-line">
+                      <input class="form-control input-sm" placeholder="Ingrese la dirección del alumno" ng-model = "GACtrl.alumnoNuevo.direccion"  ng-change="GACtrl.copiarDireccion()">
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-header">
+            <h2>Datos del apoderado</h2>
+          </div>
+          <div class="card-body">
+            <div class="row">
+              <div class="col-sm-6">
+                <div class="form-group">
+                  <label class="label-letra-prometeo col-sm-4 control-label m-t-10 m-b-0">Nombres<strong class="text-danger">*</strong>: </label>
+                  <div class="col-sm-10">
+                    <div class="fg-line">
+                      <input class="form-control input-sm" placeholder="Ingrese los nombres del apoderado del alumno" ng-model = "GACtrl.apoderado.nombres" ng-readonly="GACtrl.disableApoderado">
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-sm-6">
+                <div class="form-group">
+                  <label class="label-letra-prometeo col-sm-4 control-label m-t-10 m-b-0">Apellidos<strong class="text-danger">*</strong>: </label>
+                  <div class="col-md-10">
+                    <div class="fg-line">
+                      <input class="form-control input-sm" placeholder="Ingrese los apellidos apoderado del alumno" ng-model = "GACtrl.apoderado.apellidos" ng-readonly="GACtrl.disableApoderado">
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-sm-6">
+                <div class="form-group">
+                  <label class="label-letra-prometeo col-sm-4 control-label m-t-10 m-b-0">DNI<strong class="text-danger">*</strong>: </label>
+                  <div class="col-sm-10">
+                    <div class="fg-line">
+                      <input class="form-control input-sm" placeholder="Ingrese el DNI del apoderado del alumno" ng-model = "GACtrl.apoderado.dni" ng-readonly="GACtrl.disableApoderado">
+                    </div>
+                  </div>
+                  <div class="col-md-2 form-inline" >
+                    <button class="btn btn-primary waves-effect" ng-click = "GACtrl.buscarApoderado()"><i class="fa fa-search"></i> Buscar</button>
+                    <button class="btn btn-primary waves-effect" ng-click = "GACtrl.cancelar()" ng-if="GACtrl.disableApoderado"><i class="fa fa-times"></i> Cancelar</button>
+                  </div>
+                </div>
+              </div>
+              <div class="col-sm-6">
+                <div class="form-group">
+                  <label class="label-letra-prometeo col-sm-4 control-label m-t-10 m-b-0">Correo<strong class="text-danger">*</strong>: </label>
+                  <div class="col-sm-10">
+                    <div class="fg-line">
+                      <input class="form-control input-sm" placeholder="Ingrese el correo del apoderado del alumno" ng-model = "GACtrl.apoderado.correo" ng-readonly="GACtrl.disableApoderado">
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-sm-6">
+                <div class="form-group">
+                  <label class="label-letra-prometeo col-sm-4 control-label m-t-10 m-b-0">Direcci&oacute;n<strong class="text-danger">*</strong>: </label>
+                  <div class="col-sm-10">
+                    <div class="fg-line">
+                      <input class="form-control input-sm" placeholder="Ingrese la dirección del apoderado del alumno" ng-model = "GACtrl.apoderado.direccion" ng-readonly="GACtrl.disableApoderado">
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-sm-6">
+                <div class="form-group">
+                  <label class="label-letra-prometeo col-sm-4 control-label m-t-10 m-b-0">Tel&eacute;fono<strong class="text-danger">*</strong>: </label>
+                  <div class="col-sm-10">
+                    <div class="fg-line">
+                      <input class="form-control input-sm" placeholder="Ingrese el teléfono del apoderado del alumno" ng-model = "GACtrl.apoderado.telefono" ng-readonly="GACtrl.disableApoderado">
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer">
+        <button class="btn btn-primary waves-effect float-right" ng-click = "GACtrl.agregar()"><i class="fa fa-plus-circle"></i> Registrar Alumno</button>
+      </div>
+    </div>
+  </div>
+</div>

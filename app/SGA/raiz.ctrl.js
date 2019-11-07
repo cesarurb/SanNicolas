@@ -44,6 +44,11 @@ function($scope, $state, $cookies, $location, $mdSidenav){
     }
   }
 
+  ctrl.irRegistrarAlumnos = function() {
+    $state.go('registrar-alumno')
+    $scope.toggleSidenav();
+  }
+
   ctrl.irLogin = function() {
     $state.go('login');
   }
@@ -67,11 +72,13 @@ function($scope, $state, $cookies, $location, $mdSidenav){
   }
 
   ctrl.init = function () {
-    console.log(ctrl.usuario);
+    $state.go('registrar-alumno');
+    // console.log(ctrl.usuario);
     if (inicioSesion == 'false') {
       $state.go('login');
     } else {
-      ctrl.irHome();
+      $state.go('registrar-alumno');
+      // ctrl.irHome();
       // $state.go('matrizPvsA', {empresaID: '89b7ec22-f05c-11e9-bccd-e4e74986983'});
     }
   };

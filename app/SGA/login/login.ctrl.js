@@ -20,12 +20,9 @@ angular.module('mySGAApp').controller("loginCtrl", ['$scope', '$state', '$locati
           if(element.status == 'loggedin') {
             $cookies.put('usuarioID', element.codigo);
             $cookies.put('username', element.NombreUsuario);
-            // $cookies.put('name', element.nombres);
-            if (element.NivelUsuario == "1") {
-              $cookies.put('rol', 'ADMIN');
-            }
-            // $cookies.put('nombres', element.nombres);
-            // $cookies.put('apellidos', element.apellidos);
+            $cookies.put('rol', element.rol);
+            $cookies.put('nombres', element.Nombres);
+            $cookies.put('apellidos', element.Apellidos);
             $cookies.put('inicioSesion', true);
             $state.go('raiz');
             // console.log($cookies.get('empresa'));
