@@ -24,28 +24,33 @@ function($scope, $state, $cookies, $location, $mdSidenav){
     $state.go('login');
   };
 
-  ctrl.irGestionUsuarios = function() {
-    if ($cookies.get('rol') == 'COORDINADOR') {
-      $state.go('gestionEmpleados');
-    } else if ($cookies.get('rol') == 'EMPLEADO') {
-      $state.go('gestionCuenta');
-    } else {
-      $state.go('gestionUsuarios');
-    }
-  }
+  // ctrl.irGestionUsuarios = function() {
+  //   if ($cookies.get('rol') == 'COORDINADOR') {
+  //     $state.go('gestionEmpleados');
+  //   } else if ($cookies.get('rol') == 'EMPLEADO') {
+  //     $state.go('gestionCuenta');
+  //   } else {
+  //     $state.go('gestionUsuarios');
+  //   }
+  // }
 
-  ctrl.irGestionEmpresas = function() {
-    if ($cookies.get('rol') == 'COORDINADOR') {
-      $state.go('gestionEmpresa');
-    } else if ($cookies.get('rol') == 'EMPLEADO') {
-      $state.go('verEmpresas');
-    } else {
-      $state.go('gestionEmpresas');
-    }
-  }
+  // ctrl.irGestionEmpresas = function() {
+  //   if ($cookies.get('rol') == 'COORDINADOR') {
+  //     $state.go('gestionEmpresa');
+  //   } else if ($cookies.get('rol') == 'EMPLEADO') {
+  //     $state.go('verEmpresas');
+  //   } else {
+  //     $state.go('gestionEmpresas');
+  //   }
+  // }
 
-  ctrl.irRegistrarAlumnos = function() {
+  ctrl.irRegistrarAlumno = function() {
     $state.go('registrar-alumno')
+    $scope.toggleSidenav();
+  }
+
+  ctrl.irRegistrarDocente = function() {
+    $state.go('registrar-docente');
     $scope.toggleSidenav();
   }
 
@@ -72,12 +77,12 @@ function($scope, $state, $cookies, $location, $mdSidenav){
   }
 
   ctrl.init = function () {
-    $state.go('registrar-alumno');
+    // $state.go('registrar-alumno');
     // console.log(ctrl.usuario);
     if (inicioSesion == 'false') {
       $state.go('login');
     } else {
-      $state.go('registrar-alumno');
+      $state.go('registrar-docente');
       // ctrl.irHome();
       // $state.go('matrizPvsA', {empresaID: '89b7ec22-f05c-11e9-bccd-e4e74986983'});
     }

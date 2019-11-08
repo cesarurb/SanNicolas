@@ -6,20 +6,17 @@
   $json_array = array();
   // $data = json_decode(file_get_contents("php://input"));
   //RECIBE VARIABLES
-  $dni = $_GET['dni'];
-  $nombres = $_GET['nombres'];
-  $apellidos = $_GET['apellidos'];
+  $id = $_GET['id'];
   $correo = $_GET['correo'];
   $telefono = $_GET['telefono'];
   $direccion = $_GET['direccion'];
-  $apoderado = $_GET['apoderado'];
 
   // $username = mysqli_real_escape_string($con, $data->username);
   $con = mysqli_connect('127.0.0.1', 'root', '', 'SGA_SAN_NICOLAS') or die ( "Upps! Pues va a ser que no se ha podido conectar a la base de datos" );
   // echo json_encode($query);
   $tildes = $con->query("SET NAMES 'utf8'"); //Para que se muestren las tildes correctamente
   // $query = "select * from usuarios where NombreUsuario = '$username' and PassUsuario = '$password'";
-  $query = "insert into alumno values (uuid(), '$dni', upper('$nombres'), upper('$apellidos'), '$correo', '$telefono', upper('$direccion'), '$apoderado',1)";
+  $query = "update docente set direccion = upper('$direccion'), telefono = '$telefono', correo = '$correo' where id = '$id'";
   // echo json_encode("$query");
   //
   try {

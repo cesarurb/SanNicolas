@@ -43,24 +43,24 @@ CREATE TABLE `cuatrimestres` (
 -- --------------------------------------------------------
 -- Estructura de tabla para la tabla `docentes`
 -- --------------------------------------------------------
-CREATE TABLE `docentes` (
-  `idDocente` int(11) NOT NULL,
-  `NombresDocente` varchar(50) NOT NULL,
-  `ApellidosDocente` varchar(50) NOT NULL,
-  `CedulaDocente` varchar(16) NOT NULL,
-  `CorreoDocente` varchar(50) NOT NULL,
-  `CelularDocente` varchar(8) NOT NULL,
-  `TelefonoDocente` varchar(8) NOT NULL,
-  `DireccionDocente` varchar(250) NOT NULL,
-  `Estado` int(1) NOT NULL,
-  `Foto` varchar(100) DEFAULT NULL
+CREATE TABLE `docente` (
+  `id` VARCHAR(32) PRIMARY KEY,
+  `dni` char(8) NOT NULL,
+  `nombres` varchar(50) NOT NULL,
+  `apellidos` varchar(50) NOT NULL,
+  `cedula` varchar(16) NOT NULL,
+  `correo` varchar(50) NOT NULL,
+  `telefono` varchar(12) NOT NULL,
+  `direccion` varchar(250) NOT NULL,
+  -- `Foto` varchar(100) DEFAULT NULL,
+  `Estado` int(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 -- Volcado de datos para la tabla `docentes`
 -- --------------------------------------------------------
-INSERT INTO `docentes` (`idDocente`, `NombresDocente`, `ApellidosDocente`, `CedulaDocente`, `CorreoDocente`, `CelularDocente`, `TelefonoDocente`, `DireccionDocente`, `Estado`, `Foto`) VALUES
-(2, 'Jorge Luis', 'Azabache Noriega', 'tal', 'jorgeazabache@hotmai.com', '99999999', '', '', 1, NULL);
+INSERT INTO `docente` VALUES
+(uuid(), '12345678','Luis', 'Noriega', 'SIN CÉDULA', 'jorgeazabache@hotmai.com', '987654321', 'AV. SU CASA', 1);
 
 -- --------------------------------------------------------
 -- Estructura de tabla para la tabla `entrega_tareas`

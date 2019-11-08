@@ -45,30 +45,36 @@
         <div class="panel">
             <div data-toggle="collapse" data-parent="#parent" data-target="#alumnos">Alumnos</div>
             <div id="alumnos" class="collapse in">
-                <a href="" ng-click="RCtrl.irRegistrarAlumnos()">Registrar Alumno</a>
+                <a href="" ng-click="RCtrl.irRegistrarAlumno()">Registrar Alumno</a>
                 <br>
-                <a href="" ng-click="">Aistencia 2</a>
+                <a href="" ng-click="">Listar Alumnos</a>
             </div>
         </div>
-
-          <div class="panel">
-              <div data-toggle="collapse" data-parent="#parent" data-target="#child">Asistencia</div>
-              <div id="child" class="collapse in">
-                  <a href="" ng-click="RCtrl.irLogin()">Aistencia 1</a>
-                  <br>
-                  <a href="" ng-click="">Aistencia 2</a>
-              </div>
-          </div>
-          <div class="panel">
-            <div data-toggle="collapse" data-parent="#parent" data-target="#child2">Notas</div>
-            <div id="child2" class="collapse in">
-                <a href="" ng-click="">Notas 1</a>
+        <div class="panel">
+            <div data-toggle="collapse" data-parent="#parent" data-target="#docentes">Docentes</div>
+            <div id="docentes" class="collapse in">
+                <a href="" ng-click="RCtrl.irRegistrarDocente()">Registrar Docente</a>
                 <br>
-                <a href="" ng-click="">Notas 2</a>
+                <a href="" ng-click="">Listar Docentes</a>
             </div>
+        </div>
+        <div class="panel">
+          <div data-toggle="collapse" data-parent="#parent" data-target="#child">Asistencia</div>
+          <div id="child" class="collapse in">
+            <a href="" ng-click="RCtrl.irLogin()">Aistencia 1</a>
+            <br>
+            <a href="" ng-click="">Aistencia 2</a>
           </div>
+        </div>
+        <div class="panel">
+          <div data-toggle="collapse" data-parent="#parent" data-target="#child2">Notas</div>
+          <div id="child2" class="collapse in">
+            <a href="" ng-click="">Notas 1</a>
+            <br>
+            <a href="" ng-click="">Notas 2</a>
+          </div>
+        </div>
       </div>
-
       <md-divider></md-divider>
     </md-sidenav>
 
