@@ -13,16 +13,49 @@ CREATE TABLE `asignaciones` (
   `NumeroAsignacion` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+
+-- --------------------------------------------------------
+-- Estructura de tabla para la tabla `GRADO`
+-- --------------------------------------------------------
+CREATE TABLE `GRADO` (
+  `id` VARCHAR(32) PRIMARY KEY,
+  `numeroGrado` int NOT NULL,
+  nivel varchar(20) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+-- Volcado de datos para la tabla `GRADO`
+-- --------------------------------------------------------
+INSERT INTO `GRADO` VALUES
+('920e7df3-01db-11ea-afdd-e4e749869830',1, 'SECUNDARIA'),
+('9620328d-01db-11ea-afdd-e4e749869830',2, 'SECUNDARIA'),
+('9a6d96ad-01db-11ea-afdd-e4e749869830',3, 'SECUNDARIA'),
+('9ea4f72b-01db-11ea-afdd-e4e749869830',4, 'SECUNDARIA'),
+('a29c371e-01db-11ea-afdd-e4e749869830',5, 'SECUNDARIA');
+
+
 -- ----------------------------------------------------------
 -- Estructura de tabla para la tabla `asignaturas`
 -- ----------------------------------------------------------
-CREATE TABLE `asignaturas` (
-  `idAsignatura` int(11) NOT NULL,
-  `NombreAsignatura` varchar(50) NOT NULL,
-  `Idcarrera` int(11) NOT NULL,
-  `IdGrupo` int(11) NOT NULL,
-  `Idcuatrimestre` int(11) NOT NULL
+CREATE TABLE `CURSO` (
+  `id` VARCHAR(32) PRIMARY KEY,
+  `nombre` varchar(50) NOT NULL,
+  `idGrado` varchar(32) NOT NULL,
+  `planDeEstudio` varchar(32) DEFAULT NULL,
+  Estado int(1) NOT NULL,
+  FOREIGN KEY (idGrado) REFERENCES GRADO(id)
 );
+
+-- --------------------------------------------------------
+-- Volcado de datos para la tabla `CURSO`
+-- --------------------------------------------------------
+INSERT INTO `CURSO` VALUES
+(uuid(), 'MATEMÁTICAS','a29c371e-01db-11ea-afdd-e4e74986', NULL, 1),
+(uuid(), 'MATEMÁTICAS','920e7df3-01db-11ea-afdd-e4e74986', NULL, 1),
+(uuid(), 'MATEMÁTICAS','9620328d-01db-11ea-afdd-e4e74986', NULL, 1),
+(uuid(), 'MATEMÁTICAS','9a6d96ad-01db-11ea-afdd-e4e74986', NULL, 1),
+(uuid(), 'MATEMÁTICAS','9ea4f72b-01db-11ea-afdd-e4e74986', NULL, 1);
+
 
 -- --------------------------------------------------------
 -- Estructura de tabla para la tabla `carreras`
@@ -61,6 +94,7 @@ CREATE TABLE `docente` (
 -- --------------------------------------------------------
 INSERT INTO `docente` VALUES
 (uuid(), '12345678','Luis', 'Noriega', 'SIN CÉDULA', 'jorgeazabache@hotmai.com', '987654321', 'AV. SU CASA', 1);
+
 
 -- --------------------------------------------------------
 -- Estructura de tabla para la tabla `entrega_tareas`
@@ -188,7 +222,7 @@ CREATE TABLE `mensajes` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
--- Estructura de tabla para la tabla `niveles`
+-- Estructura de tabla para la tabla `Rol`
 -- --------------------------------------------------------
 CREATE TABLE `ROL` (
   `id` VARCHAR(32) PRIMARY KEY,
@@ -236,20 +270,12 @@ CREATE TABLE `planificacion_tareas` (
 --
 
 CREATE TABLE `plan_estudio` (
-  `idPlan` int(11) NOT NULL,
+  `id` int(11) NOT NULL,
   `Descripcion` varchar(100) NOT NULL,
   `idCarrera` int(11) NOT NULL,
   `CantidadAsignaturas` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
--- --------------------------------------------------------
--- Estructura de tabla para la tabla `turnos`
---
-
-CREATE TABLE `turnos` (
-  `idTurno` int(11) NOT NULL,
-  `NombreTurno` varchar(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 -- Estructura de tabla para la tabla `usuario`
@@ -272,6 +298,7 @@ INSERT INTO `usuario` VALUES
 (uuid(),'ADMIN', '123', 'b1f27357-018e-11ea-afdd-e4e74986', 'ADMIN', 'ADMIN'),
 (uuid(), 'Jorge', '123', 'b1f565d0-018e-11ea-afdd-e4e74986', 'JORGE', 'AZABACHE'),
 (uuid(), 'Lusho', '123', 'b1f56711-018e-11ea-afdd-e4e74986', 'LUIS', 'TIRADO');
+
 
 -- --------------------------------------------------------
 -- Estructura de tabla para la tabla `years_academicos`

@@ -21,16 +21,16 @@ mySGAApp.config(['stateHelperProvider', '$urlRouterProvider', function(stateHelp
             controller: 'gestorAlumnosCtrl as GACtrl',
           },
           {
-            name: 'registrar-docente',
-            url: '/registrarDocente',
+            name: 'gestionar-docente',
+            url: '/gestionarDocente',
             templateUrl: 'app/SGA/administrador/gestionDocentes/gestorDocentes.html',
             controller: 'gestorDocentesCtrl as GDCtrl',
-          // },
-          // {
-          //   name: 'gestionEmpleados',
-          //   url: '/gestionEmpleados',
-          //   templateUrl: 'app/SGA/administrador/usuarios/gestorEmpleados.html',
-          //   controller: 'gestorUsuariosCtrl as GUCtrl',
+          },
+          {
+            name: 'gestionar-curso',
+            url: '/gestionCurso',
+            templateUrl: 'app/SGA/administrador/gestionCursos/gestorCursos.html',
+            controller: 'gestorCursosCtrl as GCCtrl',
           // },
           // {
           //   name: 'empresa',
@@ -123,7 +123,7 @@ mySGAApp.config(['stateHelperProvider', '$urlRouterProvider', function(stateHelp
     templateUrl: 'app/SGA/login/login.html',
     controller: 'loginCtrl as LCtrl'
   });
-  $urlRouterProvider.otherwise("/raiz/administrador/registrarDocente");
+  $urlRouterProvider.otherwise("/raiz/administrador/gestionCurso");
 }]);
 
 mySGAApp.controller("SGAController", ['$scope', function($scope){

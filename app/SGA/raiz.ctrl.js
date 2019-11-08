@@ -49,24 +49,24 @@ function($scope, $state, $cookies, $location, $mdSidenav){
     $scope.toggleSidenav();
   }
 
-  ctrl.irRegistrarDocente = function() {
-    $state.go('registrar-docente');
+  ctrl.irGestionarDocente = function() {
+    $state.go('gestionar-docente');
+    $scope.toggleSidenav();
+  }
+
+  ctrl.irGestionarCurso = function() {
+    $state.go('gestionar-curso');
     $scope.toggleSidenav();
   }
 
   ctrl.irLogin = function() {
     $state.go('login');
+    $scope.toggleSidenav();
   }
 
   ctrl.irHome = function() {
-    // if ($cookies.get('rol') == 'COORDINADOR') {
-    //   $state.go('gestionEmpleados');
-    // } else if ($cookies.get('rol') == 'EMPLEADO') {
-    //   $state.go('homeEmpleado');
-    // } else {
-    //   $state.go('homeAdmin');
-    // }
     $state.go('home');
+    $scope.toggleSidenav();
   }
 
   $scope.toggleSidenav = buildToggler('closeEventsDisabled');
@@ -77,17 +77,13 @@ function($scope, $state, $cookies, $location, $mdSidenav){
   }
 
   ctrl.init = function () {
-    // $state.go('registrar-alumno');
-    // console.log(ctrl.usuario);
     if (inicioSesion == 'false') {
       $state.go('login');
     } else {
-      $state.go('registrar-docente');
-      // ctrl.irHome();
+      $state.go('registrar-curso');
       // $state.go('matrizPvsA', {empresaID: '89b7ec22-f05c-11e9-bccd-e4e74986983'});
     }
   };
-
 
   ctrl.init();
 }]);

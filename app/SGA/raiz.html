@@ -43,7 +43,7 @@
           <a href="" ng-click="RCtrl.irHome()">Inicio</a>
         </div>
         <div class="panel">
-            <div data-toggle="collapse" data-parent="#parent" data-target="#alumnos">Alumnos</div>
+            <div data-toggle="collapse" data-parent="#parent" data-target="#alumnos">Gestionar Alumnos</div>
             <div id="alumnos" class="collapse in">
                 <a href="" ng-click="RCtrl.irRegistrarAlumno()">Registrar Alumno</a>
                 <br>
@@ -51,12 +51,10 @@
             </div>
         </div>
         <div class="panel">
-            <div data-toggle="collapse" data-parent="#parent" data-target="#docentes">Docentes</div>
-            <div id="docentes" class="collapse in">
-                <a href="" ng-click="RCtrl.irRegistrarDocente()">Registrar Docente</a>
-                <br>
-                <a href="" ng-click="">Listar Docentes</a>
-            </div>
+          <a href="" ng-click="RCtrl.irGestionarDocente()">Gestionar Docentes</a>
+        </div>
+        <div class="panel">
+          <a href="" ng-click="RCtrl.irGestionarCurso()">Gestionar Cursos</a>
         </div>
         <div class="panel">
           <div data-toggle="collapse" data-parent="#parent" data-target="#child">Asistencia</div>
