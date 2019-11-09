@@ -1,0 +1,161 @@
+<div class="row">
+  <div class="col-md-12">
+    <div class="card">
+      <div class="card-header">
+        <h1>GESTIÓN DE ASIGNACIONES</h1>
+      </div>
+      <div class="card-body">
+        <div class="card">
+          <div class="card-header">
+            <h2>Datos de la asignación</h2>
+          </div>
+          <div class="card-body">
+            <div class="row">
+              <div class="col-sm-6">
+                <div class="form-group">
+                  <label class="label-letra-prometeo col-sm-4 control-label m-t-10 m-b-0">Docente<strong class="text-danger">*</strong>: </label>
+                  <div class="col-sm-10">
+                    <div class="fg-line">
+                      <!-- <input class="form-control input-sm" placeholder="Ingrese los nombres del docente" ng-model = "GAsCtrl.docente.nombres" ng-readonly="GAsCtrl.disableDocente"> -->
+                      <div class="select">
+                        <select class="form-control"
+                          placeholder="Seleccione un grado"
+                          ng-model="GAsCtrl.asignacion.docente"
+                          ng-options="docente as docente.nombre for docente in GAsCtrl.docentesLista">
+                          <option value="" disabled selected hidden class="placeholder-select">Seleccione un docente...</option>
+                        </select>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-sm-6">
+                <div class="form-group">
+                  <label class="label-letra-prometeo col-sm-4 control-label m-t-10 m-b-0">Año<strong class="text-danger">*</strong>: </label>
+                  <div class="col-sm-10">
+                    <div class="fg-line">
+                      <input class="form-control input-sm" placeholder="Ingrese el año académico" ng-model = "GAsCtrl.asignacion.anio">
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-sm-6">
+                <div class="form-group">
+                  <label class="label-letra-prometeo col-sm-4 control-label m-t-10 m-b-0">Grado<strong class="text-danger">*</strong>: </label>
+                  <div class="col-sm-10">
+                    <div class="fg-line">
+                      <!-- <input class="form-control input-sm" placeholder="Ingrese los apellidos del docente" ng-model = "GAsCtrl.docente.apellidos" ng-readonly="GAsCtrl.disableDocente"> -->
+                      <div class="select">
+                        <select class="form-control"
+                          placeholder="Seleccione un grado"
+                          ng-model="GAsCtrl.asignacion.grado"
+                          ng-options="grado as grado.nombre for grado in GAsCtrl.gradosLista"
+                          ng-change="GAsCtrl.obtenerCursos()">
+                          <option value="" disabled selected hidden class="placeholder-select">Seleccione un grado...</option>
+                        </select>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-sm-6">
+                <div class="form-group">
+                  <label class="label-letra-prometeo col-sm-4 control-label m-t-10 m-b-0">Curso<strong class="text-danger">*</strong>: </label>
+                  <div class="col-sm-10">
+                    <div class="fg-line">
+                      <!-- <input class="form-control input-sm" placeholder="Ingrese el correo del docente" ng-model = "GAsCtrl.docente.correo"> -->
+                      <div class="fg-line">
+                        <!-- <input class="form-control input-sm" placeholder="Ingrese los nombres del docente" ng-model = "GAsCtrl.docente.nombres" ng-readonly="GAsCtrl.disableDocente"> -->
+                        <div class="select">
+                          <select class="form-control"
+                            placeholder="Seleccione un curso"
+                            ng-model="GAsCtrl.asignacion.curso"
+                            ng-options="curso as curso.nombre for curso in GAsCtrl.cursosLista">
+                            <option value="" disabled selected hidden class="placeholder-select">Seleccione un curso...</option>
+                          </select>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-sm-6">
+                <div class="form-group">
+                  <label class="label-letra-prometeo col-sm-4 control-label m-t-10 m-b-0">Turno<strong class="text-danger">*</strong>: </label>
+                  <div class="col-sm-10">
+                    <div class="fg-line">
+                      <!-- <input class="form-control input-sm" placeholder="Ingrese el teléfono del docente" ng-model = "GAsCtrl.docente.telefono"> -->
+                      <div class="select">
+                          <select class="form-control"
+                            placeholder="Seleccione un turno"
+                            ng-model="GAsCtrl.asignacion.turno">
+                            <option value="" disabled selected hidden class="placeholder-select">Seleccione un turno...</option>
+                            <option value="MAÑANA" class="placeholder-select">MAÑANA</option>
+                            <option value="TARDE" class="placeholder-select">TARDE</option>
+                          </select>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- <div class="col-sm-6">
+                <div class="form-group">
+                  <label class="label-letra-prometeo col-sm-4 control-label m-t-10 m-b-0">Direcci&oacute;n<strong class="text-danger">*</strong>: </label>
+                  <div class="col-sm-10">
+                    <div class="fg-line">
+                      <input class="form-control input-sm" placeholder="Ingrese la dirección del docente" ng-model = "GAsCtrl.docente.direccion">
+                    </div>
+                  </div>
+                </div>
+              </div> -->
+            </div>
+          </div>
+          <div class="card-footer">
+            <button class="btn btn-primary waves-effect float-right" ng-click = "GAsCtrl.agregar()"><i class="fa fa-plus-circle"></i> Registrar Asignación</button>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-header">
+            <h2>Lista de asignaciones del año</h2>
+          </div>
+          <div class="card-body">
+            <div class="row">
+              <div class="col-md-12">
+                <div class="table-responsive p-r-0">
+                  <table ng-table="GAsCtrl.asignacionesTabla" class="table table-bordered">
+                    <tr ng-repeat="asignacion in GAsCtrl.asignacionesLista">
+                      <td data-title="'Nro.'" align="center" width="5%">
+                        {{$index + 1}}
+                      </td>
+                      <td data-title="'Docente'">
+                        {{asignacion.docente}}
+                      </td>
+                      <td data-title="'Curso'">
+                        {{asignacion.curso}}
+                      </td>
+                      <td data-title="'Grado'">
+                        {{asignacion.grado}}
+                      </td>
+                      <td data-title="'Turno'">
+                        {{asignacion.turno}}
+                      </td>
+                      <td data-title="'Eliminar'" align="center" width="7%">
+                        <a href="" style="padding:3px;" ng-click="GAsCtrl.eliminarAsignacion(asignacion)">
+                          <i class="fas fa-trash-alt"></i>
+                        </a>
+                      </td>
+                    </tr>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

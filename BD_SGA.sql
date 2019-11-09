@@ -1,18 +1,6 @@
 create database SGA_SAN_NICOLAS;
 use SGA_SAN_NICOLAS;
 SET AUTOCOMMIT=1;
-CREATE TABLE `asignaciones` (
-  `idAsignacion` int(11) NOT NULL,
-  `Descripcion` varchar(100) NOT NULL,
-  `idDocente` int(11) NOT NULL,
-  `idAsignatura` int(11) NOT NULL,
-  `idGrupo` int(11) NOT NULL,
-  `idTurno` int(11) NOT NULL,
-  `idHorario` int(11) NOT NULL,
-  `Estado` varchar(11) NOT NULL,
-  `NumeroAsignacion` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
 
 -- --------------------------------------------------------
 -- Estructura de tabla para la tabla `GRADO`
@@ -94,6 +82,25 @@ CREATE TABLE `docente` (
 -- --------------------------------------------------------
 INSERT INTO `docente` VALUES
 (uuid(), '12345678','Luis', 'Noriega', 'SIN CÉDULA', 'jorgeazabache@hotmai.com', '987654321', 'AV. SU CASA', 1);
+
+
+-- --------------------------------------------------------
+-- Estructura de tabla para la tabla `ASIGNACION`
+-- --------------------------------------------------------
+CREATE TABLE `ASIGNACION` (
+  `id` VARCHAR(32) NOT NULL,
+  -- `Descripcion` varchar(100) NOT NULL,
+  `idDocente` VARCHAR(32) NOT NULL,
+  `idCurso` VARCHAR(32) NOT NULL,
+  `anio` CHAR(4) NOT NULL,
+  -- `idGrupo` int(11) NOT NULL,
+  -- `idTurno` int(11) NOT NULL,
+  `turno` VARCHAR(20) NOT NULL,
+  `estado` int(1) NOT NULL,
+  -- `NumeroAsignacion` int(11) NOT NULL
+  foreign key (idDocente) REFERENCES DOCENTE(id),
+  foreign key (idCurso) REFERENCES CURSO(id)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 
 -- --------------------------------------------------------

@@ -80,7 +80,7 @@ function($scope, $state, $cookies, $location, $mdSidenav){
     if (inicioSesion == 'false') {
       $state.go('login');
     } else {
-      $state.go('registrar-curso');
+      $state.go('registrar-asignacion');
       // $state.go('matrizPvsA', {empresaID: '89b7ec22-f05c-11e9-bccd-e4e74986983'});
     }
   };
