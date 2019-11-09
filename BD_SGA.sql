@@ -240,9 +240,9 @@ CREATE TABLE `ROL` (
 -- Volcado de datos para la tabla `niveles`
 -- --------------------------------------------------------
 INSERT INTO `rol` VALUES
-('b1f27357-018e-11ea-afdd-e4e74986', 'Administrador'),
-('b1f565d0-018e-11ea-afdd-e4e74986', 'Docente'),
-('b1f56711-018e-11ea-afdd-e4e74986', 'Estudiante');
+('b1f27357-018e-11ea-afdd-e4e74986', 'ADMINISTRADOR'),
+('b1f565d0-018e-11ea-afdd-e4e74986', 'DOCENTE'),
+('b1f56711-018e-11ea-afdd-e4e74986', 'ALUMNO');
 
 -- --------------------------------------------------------
 -- Estructura de tabla para la tabla `numeros_asignaciones`

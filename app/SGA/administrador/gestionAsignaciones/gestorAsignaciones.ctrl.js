@@ -1,5 +1,5 @@
-angular.module('mySGAApp').controller("gestorAsignacionesCtrl", ['$scope', 'NgTableParams', '$location', '$http', '$cookies',
-function($scope, NgTableParams, $location, $http, $cookies){
+angular.module('mySGAApp').controller("gestorAsignacionesCtrl", ['$scope', '$state','NgTableParams', '$location', '$http', '$cookies',
+function($scope, $state, NgTableParams, $location, $http, $cookies){
   var ctrl = this;
   ctrl.asignacion = {
     id: "",
@@ -15,6 +15,10 @@ function($scope, NgTableParams, $location, $http, $cookies){
       var r = Math.random() * 16 | 0, v = c == 'x' ? r : (r & 0x3 | 0x8);
       return v.toString(16);
     });
+  }
+
+  ctrl.irHome = function() {
+    $state.go('inicioAdmin');
   }
 
   ctrl.cargarAsignaciones = function () {

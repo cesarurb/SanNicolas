@@ -25,7 +25,7 @@ angular.module('mySGAApp').controller("loginCtrl", ['$scope', '$state', '$locati
             $cookies.put('apellidos', element.Apellidos);
             $cookies.put('inicioSesion', true);
             $state.go('raiz');
-            // console.log($cookies.get('empresa'));
+            // console.log(element);
           } else {
             // ctrl.estado = "DESLOGUEADO";
             swal("¡Opss!", "El usuario no se encuentra en la base de datos" , "error");
@@ -40,10 +40,8 @@ angular.module('mySGAApp').controller("loginCtrl", ['$scope', '$state', '$locati
   }
 
   ctrl.init = function() {
-    // $cookies.put('inicioSesion', false);
-    console.log($cookies.get('inicioSesion'))
     if ($cookies.get('inicioSesion') == 'true') {
-      // $state.go('home');
+      $state.go('raiz');
     }
   }
 

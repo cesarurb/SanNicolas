@@ -17,7 +17,6 @@ function($scope, $state, $cookies, $location, $mdSidenav){
     $cookies.remove('usuarioID');
     $cookies.remove('username');
     $cookies.remove('rol');
-    $cookies.remove('empresa');
     $cookies.remove('nombres');
     $cookies.remove('apellidos');
     $cookies.put('inicioSesion', false);
@@ -65,8 +64,13 @@ function($scope, $state, $cookies, $location, $mdSidenav){
   }
 
   ctrl.irHome = function() {
-    $state.go('home');
-    $scope.toggleSidenav();
+    if ($cookies.get('rol') == 'ADMINISTRADOR') {
+       $state.go('inicioAdmin');
+     } else if ($cookies.get('rol') == 'DOCENTE') {
+       $state.go('inicioDocente');
+     } else {
+       $state.go('inicioAlumno');
+     }
   }
 
   $scope.toggleSidenav = buildToggler('closeEventsDisabled');
@@ -77,10 +81,10 @@ function($scope, $state, $cookies, $location, $mdSidenav){
   }
 
   ctrl.init = function () {
-    if (inicioSesion == 'false') {
+    if ($cookies.get('inicioSesion') != 'true') {
       $state.go('login');
     } else {
-      $state.go('registrar-asignacion');
+      ctrl.irHome();
       // $state.go('matrizPvsA', {empresaID: '89b7ec22-f05c-11e9-bccd-e4e74986983'});
     }
   };

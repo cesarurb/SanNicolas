@@ -8,12 +8,13 @@
       <!-- <md-button class="md-icon-button" ng-click="toggle()" hide-gt-sm aria-label="Toogle Menu">
         <ng-md-icon icon="{{icon}}"></ng-md-icon>
       </md-button> -->
+      <a href="" ng-click="RCtrl.logOut()">SALIR</a>
       <h1>COLEGIO "SAN NICOLÁS"</h1>
     </md-truncate>
   </md-toolbar>
 
   <section layout="row" flex>
-    <md-sidenav class="md-sidenav-left" md-component-id="closeEventsDisabled" md-whiteframe="4" md-disable-close-events>
+    <!-- <md-sidenav class="md-sidenav-left" md-component-id="closeEventsDisabled" md-whiteframe="4" md-disable-close-events>
       <md-toolbar class="md-theme-indigo">
         <div class="row-md-12 m-t-10">
           <div class="col-md-12" align="center">
@@ -74,7 +75,7 @@
         </div>
       </div>
       <md-divider></md-divider>
-    </md-sidenav>
+    </md-sidenav> -->
 
     <md-content flex layout-padding>
       <div ui-view></div>

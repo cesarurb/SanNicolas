@@ -3,19 +3,17 @@
     <div class="container">
       <div class="login-wrap">
         <div class="login-content">
-          <div class="login-logo">
-            <a href="#">
-              <img src="images/icon/logo.png" alt="CoolAdmin">
-            </a>
+          <div class="login-logo" align="center">
+            <img src="app/images/logo.png" alt="LOGO SAN NICOLAS" width="25%" />
           </div>
           <div class="login-form">
             <form id="loginForm" class="ng-pristine ng-valid">
               <div class="form-group">
-                <label>Email Address</label>
+                <label>Usuario</label>
                 <input type="text" id="user" name="user" class="au-input au-input--full" placeholder="Usuario" ng-model="username" required>
               </div>
               <div class="form-group">
-                <label>Password</label>
+                <label>Contraseña</label>
                 <input type="password" id="password" name="password" class="au-input au-input--full" placeholder="Contraseña" ng-model="password" required>
               </div>
               <div class="login-checkbox">
@@ -23,7 +21,7 @@
                   <!-- <input type="checkbox" name="remember">Remember Me -->
                 </label>
                 <label>
-                  <a href="#">Forgotten Password?</a>
+                  <a href="#">¿Olvidaste tu contraseña?</a>
                 </label>
               </div>
               <button class="btn btn-lg btn-primary btn-block" ng-click="login()">Acceder</button>
@@ -34,12 +32,12 @@
                 </div>
               </div> -->
             </form>
-            <div class="register-link">
+            <!-- <div class="register-link">
               <p>
                 Don't you have account?
                 <a href="#">Sign Up Here</a>
               </p>
-            </div>
+            </div> -->
           </div>
         </div>
       </div>
