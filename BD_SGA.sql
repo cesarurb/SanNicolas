@@ -295,6 +295,7 @@ CREATE TABLE `usuario` (
   `Nombres` varchar(50) NOT NULL,
   `Apellidos` varchar(50) NOT NULL,
   -- `Foto` varchar(100) DEFAULT NULL,
+  `estado` int(1) NOT NULL,
   FOREIGN KEY (`idRol`) REFERENCES ROL(`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -302,9 +303,9 @@ CREATE TABLE `usuario` (
 -- Volcado de datos para la tabla `usuario`
 -- --------------------------------------------------------
 INSERT INTO `usuario` VALUES
-(uuid(),'ADMIN', '123', 'b1f27357-018e-11ea-afdd-e4e74986', 'ADMIN', 'ADMIN'),
-(uuid(), 'Jorge', '123', 'b1f565d0-018e-11ea-afdd-e4e74986', 'JORGE', 'AZABACHE'),
-(uuid(), 'Lusho', '123', 'b1f56711-018e-11ea-afdd-e4e74986', 'LUIS', 'TIRADO');
+(uuid(),'ADMIN', '123', 'b1f27357-018e-11ea-afdd-e4e74986', 'ADMIN', 'ADMIN', 1),
+(uuid(), 'Jorge', '123', 'b1f565d0-018e-11ea-afdd-e4e74986', 'JORGE', 'AZABACHE', 1),
+(uuid(), 'Lusho', '123', 'b1f56711-018e-11ea-afdd-e4e74986', 'LUIS', 'TIRADO', 1);
 
 
 -- --------------------------------------------------------

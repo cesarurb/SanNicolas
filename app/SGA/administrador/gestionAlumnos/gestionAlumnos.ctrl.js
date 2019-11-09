@@ -124,7 +124,20 @@ function($scope, $state, NgTableParams, $location, $http, $cookies){
   ctrl.guardarAlumno = function() {
     $http.get("./app/SGA/administrador/gestionAlumnos/insertarAlumno.php",{params: {dni: ctrl.alumnoNuevo.dni, nombres: ctrl.alumnoNuevo.nombres, apellidos: ctrl.alumnoNuevo.apellidos, correo: ctrl.alumnoNuevo.correo, telefono: ctrl.alumnoNuevo.telefono, direccion: ctrl.alumnoNuevo.direccion, apoderado: ctrl.apoderado.id}})
     .then(function (response) {
-      console.log(response);
+      // console.log(response);
+      if (response.data == 'HECHO SIN ERRORES') {
+        ctrl.guardarUsuario();
+        // swal("¡Bien hecho!", "El Alumno fue registrado exitosamente" , "success");
+      } else {
+        swal("¡Opss!", "No se pudo registrar el alumno." , "error");
+      }
+    });
+  }
+
+  ctrl.guardarUsuario = function() {
+    $http.get("./app/SGA/administrador/gestionAlumnos/insertarUsuario.php",{params: {dni: ctrl.alumnoNuevo.dni, nombres: ctrl.alumnoNuevo.nombres, apellidos: ctrl.alumnoNuevo.apellidos, correo: ctrl.alumnoNuevo.correo}})
+    .then(function (response) {
+      // console.log(response);
       if (response.data == 'HECHO SIN ERRORES') {
         ctrl.alumnoNuevo.id = "";
         ctrl.alumnoNuevo.dni = "";
@@ -134,9 +147,9 @@ function($scope, $state, NgTableParams, $location, $http, $cookies){
         ctrl.alumnoNuevo.direccion = "";
         ctrl.alumnoNuevo.telefono = "";
         ctrl.cancelar();
-        swal("¡Bien hecho!", "El Alumno fue registrado exitosamente" , "success");
+        swal("¡Bien hecho!", "El usuario del alumno fue registrado exitosamente" , "success");
       } else {
-        swal("¡Opss!", "No se pudo registrar el alumno." , "error");
+        swal("¡Opss!", "No se pudo registrar el usuario del alumno." , "error");
       }
     });
   }

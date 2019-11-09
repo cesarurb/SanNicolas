@@ -1,5 +1,5 @@
-angular.module('mySGAApp').controller("gestorCursosCtrl", ['$scope', '$state','NgTableParams', '$location', '$http', '$cookies',
-function($scope, '$state', NgTableParams, $location, $http, $cookies){
+angular.module('mySGAApp').controller("gestorCursosCtrl", ['$scope', '$state', 'NgTableParams', '$location', '$http', '$cookies',
+function($scope, $state, NgTableParams, $location, $http, $cookies){
   var ctrl = this;
   ctrl.curso = {
     id: "",

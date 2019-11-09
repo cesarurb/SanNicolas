@@ -43,12 +43,23 @@ function($scope, $state, NgTableParams, $location, $http, $cookies){
   ctrl.agregarDocente = function() {
     $http.get("./app/SGA/administrador/gestionDocentes/insertarDocente.php",{params: {dni: ctrl.docente.dni, nombres: ctrl.docente.nombres, apellidos: ctrl.docente.apellidos, correo: ctrl.docente.correo, telefono: ctrl.docente.telefono, direccion: ctrl.docente.direccion}})
     .then(function (response) {
-      console.log(response);
+      // console.log(response);
+      if (response.data == 'HECHO SIN ERRORES') {
+        ctrl.agregarUsuario()
+      } else {
+        swal("¡Opss!", "No se pudo registrar el docente." , "error");
+      }
+    });
+  }
+
+  ctrl.agregarUsuario = function() {
+    $http.get("./app/SGA/administrador/gestionDocentes/insertarUsuario.php",{params: {dni: ctrl.docente.dni, nombres: ctrl.docente.nombres, apellidos: ctrl.docente.apellidos, correo: ctrl.docente.correo}})
+    .then(function (response) {
       if (response.data == 'HECHO SIN ERRORES') {
         swal("¡Bien hecho!", "El docente fue registrado exitosamente" , "success");
         ctrl.cancelar()
       } else {
-        swal("¡Opss!", "No se pudo registrar el docente." , "error");
+        swal("¡Opss!", "No se pudo registrar el usuario del docente." , "error");
       }
     });
   }
