@@ -1,15 +1,22 @@
 <section>
 
   <md-toolbar>
-    <md-truncate class="md-toolbar-tools">
-      <md-button ng-click="toggleSidenav()" class="md-raised md-primary">
+    <md-truncate class="md-toolbar-tools row">
+      <div class="col-md-1">
+        PANEL {{RCtrl.usuario.rolUsuario}}
+      </div>
+      <!-- <md-button ng-click="toggleSidenav()" class="md-raised md-primary col-md-1">
         <i class="fas fa-bars"></i>
-      </md-button>
+      </md-button> -->
       <!-- <md-button class="md-icon-button" ng-click="toggle()" hide-gt-sm aria-label="Toogle Menu">
         <ng-md-icon icon="{{icon}}"></ng-md-icon>
       </md-button> -->
-      <a href="" ng-click="RCtrl.logOut()">SALIR</a>
-      <h1>COLEGIO "SAN NICOLÁS"</h1>
+      <div class="col-md-10" align="center">
+        <h1>COLEGIO "SAN NICOLÁS"</h1>
+      </div>
+      <div class="col-md-1">
+        <a href="" ng-click="RCtrl.logOut()"><i class="fas fa-power-off"></i> Salir</a>
+      </div>
     </md-truncate>
   </md-toolbar>
 

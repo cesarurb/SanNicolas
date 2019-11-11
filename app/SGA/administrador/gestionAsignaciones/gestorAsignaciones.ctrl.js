@@ -25,15 +25,13 @@ function($scope, $state, NgTableParams, $location, $http, $cookies){
     $http.get('./app/SGA/administrador/gestionAsignaciones/cargarAsignaciones.php',{params: {}}
     ).then(function (response) {
       // console.log(response.data)
-      if (response.data.status != 'Error') {
-        try {
+      try {
+        if (response.data.status != 'Error') {
           ctrl.asignacionesLista = response.data;
           ctrl.asignacionesTabla = new NgTableParams({ dataset: ctrl.asignacionesLista });
-        } catch (e) {
-          swal("¡Opss!", "Ocurrió un error." + e , "error");
         }
-      } else {
-        swal("¡Opss!", "No se encuentró ninguna asignación.", "error");
+      } catch (e) {
+        swal("¡Opss!", "Ocurrió un error." + e , "error");
       }
     })
   }
@@ -116,15 +114,15 @@ function($scope, $state, NgTableParams, $location, $http, $cookies){
   ctrl.obtenerCursos = function () {
     $http.get('./app/SGA/administrador/gestionAsignaciones/buscarCursos.php',{params: {grado: ctrl.asignacion.grado.id}}
     ).then(function (response) {
-      if (response.data.status != 'Error') {
-        try {
+      try {
+        if (response.data.status != 'Error') {
           ctrl.cursosLista = response.data;
-        } catch (e) {
-          swal("¡Opss!", "Ocurrió un error." + e , "error");
+        } else {
+          ctrl.cursosLista = null;
+          swal("¡Opss!", "No se encuentró ningún curso para mostrar.", "error");
         }
-      } else {
-        ctrl.cursosLista = null;
-        swal("¡Opss!", "No se encuentró ningún curso para mostrar.", "error");
+      } catch (e) {
+        swal("¡Opss!", "Ocurrió un error." + e , "error");
       }
     })
   }
