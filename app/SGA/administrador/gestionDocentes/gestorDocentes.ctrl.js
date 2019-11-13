@@ -123,6 +123,11 @@ function($scope, $state, NgTableParams, $location, $http, $cookies){
   }
 
   ctrl.init = function () {
+    if ($cookies.get('rol') == 'DOCENTE') {
+      $state.go('inicioDocente');
+    } else if ($cookies.get('rol') == 'ALUMNO'){
+      $state.go('inicioAlumno');
+    }
     ctrl.buscarDocentes();
   };
 

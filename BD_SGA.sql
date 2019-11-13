@@ -75,6 +75,9 @@ CREATE TABLE `docente` (
   `correo` varchar(50) NOT NULL,
   `telefono` varchar(12) NOT NULL,
   `direccion` varchar(250) NOT NULL,
+  `nacimiento` date not null,
+  `genero` VARCHAR(9) NOT NULL,
+  `ingreso` date not null,
   -- `Foto` varchar(100) DEFAULT NULL,
   `Estado` int(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -83,7 +86,7 @@ CREATE TABLE `docente` (
 -- Volcado de datos para la tabla `docentes`
 -- --------------------------------------------------------
 INSERT INTO `docente` VALUES
-(uuid(), '12345678','JORGE', 'AZABACHE', 'SIN CÉDULA', 'jorgeazabache@hotmai.com', '987654321', 'AV. SU CASA', 1);
+(uuid(), '12345678','JORGE', 'AZABACHE', 'SIN CÉDULA', 'jorgeazabache@hotmai.com', '987654321', 'AV. SU CASA', '1998-04-27', 'MASCULINO', NOW(), 1);
 
 
 -- --------------------------------------------------------
@@ -143,9 +146,9 @@ INSERT INTO `apoderado` VALUES
 
 
 -- --------------------------------------------------------
--- Estructura de tabla para la tabla `estudiantes`
+-- Estructura de tabla para la tabla `ALUMNO`
 -- --------------------------------------------------------
-CREATE TABLE `alumno` (
+CREATE TABLE `ALUMNO` (
   `id` VARCHAR(32) NOT NULL,
   `dni` VARCHAR(8) NOT NULL,
   `nombres` varchar(50) NOT NULL,
@@ -153,14 +156,18 @@ CREATE TABLE `alumno` (
   `correo` varchar(50) NOT NULL,
   `telefono` varchar(9) NOT NULL,
   `direccion` varchar(250) NOT NULL,
+  nacimiento date not null,
+  genero VARCHAR(9) NOT NULL,
+  grupoSanguineo CHAR(3) NOT NULL,
   -- `Foto` varchar(100) DEFAULT NULL,
   `idApoderado` VARCHAR(32) NOT NULL,
+  `ingreso` date not null,
   `Estado` int(1) NOT NULL,
   foreign key (idApoderado) references apoderado(id)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 insert into alumno values 
-(uuid(), '87654321','LUIS', 'TIRADO', 'ltirado@unitru.edu.pe', '987654321', 'depa', '7afe7e9c-011b-11ea-afdd-e4e74986', 1);
+(uuid(), '87654321','LUIS', 'TIRADO', 'ltirado@unitru.edu.pe', '987654321', 'depa', '1998-04-27', 'MASCULINO', 'O+','7afe7e9c-011b-11ea-afdd-e4e74986', NOW(), 1);
 
 
 -- --------------------------------------------------------

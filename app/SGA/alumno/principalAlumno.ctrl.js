@@ -1,9 +1,9 @@
-angular.module('mySGAApp').controller('administradorCtrl', ['$scope', '$state', '$cookies',
+angular.module('mySGAApp').controller('alumnoCtrl', ['$scope', '$state', '$cookies',
 function($scope, $state, $cookies){
   var ctrl = this;
 
   ctrl.irGestionarAlumno = function() {
-    $state.go('gestionar-alumno')
+    $state.go('registrar-alumno')
   }
 
   ctrl.irGestionarDocente = function() {

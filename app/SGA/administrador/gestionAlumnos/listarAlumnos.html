@@ -1,0 +1,51 @@
+<div class="row">
+  <div class="col-md-12">
+    <nav aria-label="breadcrumb">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="" ng-click="GACtrl.irHome()">Inicio</a></li>
+        <li class="breadcrumb-item active">Gestionar alumno</li>
+      </ol>
+    </nav>
+    <a class="btn btn-success waves-effect" href="" ng-click="GACtrl.irRegistrarAlumno()"><i class="fa fa-plus"></i> Registrar alumno</a><br><br>
+    <div class="table-responsive">
+      <table ng-table="GACtrl.alumnosTabla" class="table table-bordered">
+        <tr ng-repeat="alumno in GACtrl.alumnosLista">
+          <td data-title="'Nro.'" align="center" width="5%">
+            {{$index + 1}}
+          </td>
+          <td data-title="'Nombre'">
+            {{alumno.nombre}}
+          </td>
+          <td data-title="'DNI'" align="center">
+            {{alumno.dni}}
+          </td>
+          <td data-title="'Teléfono'" align="center">
+            {{alumno.telefono}}
+          </td>
+          <td data-title="'Correo'">
+            {{alumno.correo}}
+          </td>
+          <td data-title="'Apoderado'">
+            {{alumno.apoderadoNombre}}
+          </td>
+          <td data-title="'DNI Ap.'" align="center">
+            {{alumno.apoderadoDNI}}
+          </td>
+          <td data-title="'Teléfono Ap.'" align="center">
+            {{alumno.apoderadoTelefono}}
+          </td>
+          <td data-title="'Eliminar'" align="center">
+            <!-- <div align="center"> -->
+              <!-- <a href="" style="padding:5px;" class="col-md-6" ng-click="ctrl.modificarAlumno(alumno)">
+                <i class="fas fa-pencil-alt"></i>
+              </a> -->
+              <a href="" style="padding:5px;" class="col-md-6" ng-click="GACtrl.eliminarAlumno(alumno)">
+                <i class="fas fa-trash-alt"></i>
+              </a>
+              <!-- </div> -->
+            </td>
+          </tr>
+        </table>
+      </div>
+    </div>
+  </div>

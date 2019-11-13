@@ -12,6 +12,9 @@
   $correo = $_GET['correo'];
   $telefono = $_GET['telefono'];
   $direccion = $_GET['direccion'];
+  $nacimiento = $_GET['nacimiento'];
+  $genero = $_GET['genero'];
+  $grupo = $_GET['grupoSanguineo'];
   $apoderado = $_GET['apoderado'];
 
   // $username = mysqli_real_escape_string($con, $data->username);
@@ -19,7 +22,7 @@
   // echo json_encode($query);
   $tildes = $con->query("SET NAMES 'utf8'"); //Para que se muestren las tildes correctamente
   // $query = "select * from usuarios where NombreUsuario = '$username' and PassUsuario = '$password'";
-  $query = "insert into alumno values (uuid(), '$dni', upper('$nombres'), upper('$apellidos'), '$correo', '$telefono', upper('$direccion'), '$apoderado',1)";
+  $query = "insert into alumno values (uuid(), '$dni', upper('$nombres'), upper('$apellidos'), '$correo', '$telefono', upper('$direccion'), '$nacimiento', '$genero', '$grupo', '$apoderado', now(), 1)";
   // echo json_encode("$query");
   //
   try {

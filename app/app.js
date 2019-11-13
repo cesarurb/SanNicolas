@@ -21,6 +21,12 @@ mySGAApp.config(['stateHelperProvider', '$urlRouterProvider', function(stateHelp
             controller: 'administradorCtrl as AdmCtrl'
           },
           {
+            name: 'gestionar-alumno',
+            url: '/gestionAlumno',
+            templateUrl: 'app/SGA/administrador/gestionAlumnos/listarAlumnos.html',
+            controller: 'gestorAlumnosCtrl as GACtrl',
+          },
+          {
             name: 'registrar-alumno',
             url: '/registrarAlumno',
             templateUrl: 'app/SGA/administrador/gestionAlumnos/registrarAlumnos.html',
@@ -51,18 +57,18 @@ mySGAApp.config(['stateHelperProvider', '$urlRouterProvider', function(stateHelp
             controller: 'gestorUsuariosCtrl as GUCtrl'
           }
         ]
+      },
+      {
+        name: 'alumno',
+        url: '/alumno',
+        templateUrl: 'app/SGA/alumno/alumno.html',
+        children: [
+          {
+            name: 'inicioAlumno',
+            url: '/inicioAlumno',
+            templateUrl: 'app/SGA/alumno/principalAlumno.html',
+            controller: 'alumnoCtrl as AlumCtrl'
       // },
-      // {
-      //   name: 'home',
-      //   url: '/home',
-      //   templateUrl: 'app/SGA/home/home.html',
-      //   controller: 'homeCtrl as HCtrl'
-      //   children: [
-      //     {
-      //       name: 'homeCoordinador',
-      //       url: '/homeCoordinador',
-      //       templateUrl: 'app/SGA/coordinador/home/home.html'
-      //     },
       //     {
       //       name: 'gestionEmpleados',
       //       url: '/gestionEmpleados',
@@ -99,8 +105,8 @@ mySGAApp.config(['stateHelperProvider', '$urlRouterProvider', function(stateHelp
       //         //   controller: 'matrizFodaCtrl as MFCtrl'
       //         }
       //       ]
-      //     }
-      //   ]
+          }
+        ]
       }
     ]
   }, { keepOriginalNames: true })

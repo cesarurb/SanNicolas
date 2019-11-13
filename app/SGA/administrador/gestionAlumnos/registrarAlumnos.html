@@ -3,7 +3,8 @@
     <nav aria-label="breadcrumb">
       <ol class="breadcrumb">
         <li class="breadcrumb-item"><a href="" ng-click="GACtrl.irHome()">Inicio</a></li>
-        <li class="breadcrumb-item active">Gestionar alumno</li>
+        <li class="breadcrumb-item"><a href="" ng-click="GACtrl.irGestionarAlumno()">Gestionar alumnos</a></li>
+        <li class="breadcrumb-item active">Registrar alumno</li>
       </ol>
     </nav>
     <div class="card">
@@ -51,6 +52,55 @@
               </div>
               <div class="col-sm-6">
                 <div class="form-group">
+                  <label class="label-letra-prometeo col-sm-4 control-label m-t-10 m-b-0">Fecha de nacimiento<strong class="text-danger">*</strong>: </label>
+                  <div class="col-sm-10">
+                    <div class="fg-line">
+                      <input type="date" class="form-control input-sm" placeholder="Ingrese la fecha de nacimiento del alumno" ng-model = "GACtrl.alumnoNuevo.nacimiento">
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-sm-6">
+                <div class="form-group">
+                  <label class="label-letra-prometeo col-sm-4 control-label m-t-10 m-b-0">Género<strong class="text-danger">*</strong>: </label>
+                  <div class="col-sm-10">
+                    <div class="fg-line">
+                      <div class="select">
+                          <select class="form-control"
+                            placeholder="Seleccione un género"
+                            ng-model="GACtrl.alumnoNuevo.genero">
+                            <option value="" disabled selected hidden class="placeholder-select">Seleccione un género...</option>
+                            <option value="MASCULINO" class="placeholder-select">MASCULINO</option>
+                            <option value="FEMENINO" class="placeholder-select">FEMENINO</option>
+                          </select>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-sm-6">
+                <div class="form-group">
+                  <label class="label-letra-prometeo col-sm-4 control-label m-t-10 m-b-0">Grupo sanguineo<strong class="text-danger">*</strong>: </label>
+                  <div class="col-sm-10">
+                    <div class="fg-line">
+                      <div class="select">
+                        <select class="form-control"
+                          placeholder="Seleccione un grupo sanguineo..."
+                          ng-model="GACtrl.alumnoNuevo.grupoSanguineo"
+                          ng-options="grupo for grupo in GACtrl.grupoSanguineoLista">
+                          <option value="" disabled selected hidden class="placeholder-select">Seleccione un grupo sanguineo...</option>
+                        </select>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-sm-6">
+                <div class="form-group">
                   <label class="label-letra-prometeo col-sm-4 control-label m-t-10 m-b-0">Correo<strong class="text-danger">*</strong>: </label>
                   <div class="col-sm-10">
                     <div class="fg-line">
@@ -59,8 +109,6 @@
                   </div>
                 </div>
               </div>
-            </div>
-            <div class="row">
               <div class="col-sm-6">
                 <div class="form-group">
                   <label class="label-letra-prometeo col-sm-4 control-label m-t-10 m-b-0">Tel&eacute;fono<strong class="text-danger">*</strong>: </label>
@@ -71,6 +119,8 @@
                   </div>
                 </div>
               </div>
+            </div>
+            <div class="row">
               <div class="col-sm-6">
                 <div class="form-group">
                   <label class="label-letra-prometeo col-sm-4 control-label m-t-10 m-b-0">Direcci&oacute;n<strong class="text-danger">*</strong>: </label>
@@ -163,6 +213,7 @@
         </div>
       </div>
       <div class="card-footer">
+        <button class="btn btn-danger waves-effect float-left" ng-click = "GACtrl.irGestionarAlumno()"><i class="fas fa-arrow-alt-circle-left"></i> Cancelar</button>
         <button class="btn btn-primary waves-effect float-right" ng-click = "GACtrl.agregar()"><i class="fa fa-plus-circle"></i> Registrar Alumno</button>
       </div>
     </div>

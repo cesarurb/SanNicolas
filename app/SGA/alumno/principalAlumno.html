@@ -1,0 +1,165 @@
+<!-- Reducir el tamaño del icono (+)  -->
+<section id="main">
+  <div ng-controller="administradorCtrl as ctrl">
+    <div class="container">
+      <div class="row">
+        <div class="col">
+          <div class="card">
+            <div class="card-header">
+              <div class="row">
+                <h1> Funciones de alumno</h1>
+              </div>
+            </div>
+            <div class="card-body">
+              <div class="row">
+                <div class="col-md-4">
+                  <div class="card">
+                    <div class="card-header">
+                      <div class="row">
+                        <h3> : </h3>
+                      </div>
+                    </div>
+                    <div class="card-body">
+                      <div class="panel panel-default text-center">
+                        <div class="panel-heading">
+                          <span class="fa-stack fa-3x">
+                            <i class="fa fa-circle fa-stack-2x text-primary"></i>
+                            <!-- <i class="fa fa-child fa-stack-1x fa-inverse"></i> -->
+                            <i class="fa fa-graduation-cap fa-stack-1x fa-inverse"></i>
+                          </span>
+                        </div>
+                        <div class="panel-body">
+                          <h4 class="media-heading">Alumnos</h4>
+                          <a href="" ng-click="AlumCtrl.irGestionarAlumno()" class="btn btn-success"><i class="fa fa-mail-forward"></i>  Entrar</a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-4">
+                  <div class="card">
+                    <div class="card-header">
+                      <div class="row">
+                        <h3> Gestión de docentes: </h3>
+                      </div>
+                    </div>
+                    <div class="card-body">
+                      <div class="panel panel-default text-center">
+                        <div class="panel-heading">
+                          <span class="fa-stack fa-3x">
+                            <i class="fa fa-circle fa-stack-2x text-primary"></i>
+                            <i class="fa fa-child fa-stack-1x fa-inverse"></i>
+                          </span>
+                        </div>
+                        <div class="panel-body">
+                          <h4 class="media-heading">Docentes</h4>
+                          <a href="" ng-click="AlumCtrl.irGestionarDocente()" class="btn btn-success"><i class="fa fa-mail-forward"></i>  Entrar</a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-4">
+                  <div class="card">
+                    <div class="card-header">
+                      <div class="row">
+                        <h3> Gestión de cursos: </h3>
+                      </div>
+                    </div>
+                    <div class="card-body">
+                      <div class="panel panel-default text-center">
+                        <div class="panel-heading">
+                          <span class="fa-stack fa-3x">
+                            <i class="fa fa-circle fa-stack-2x text-primary"></i>
+                            <i class="fa fa-book fa-stack-1x fa-inverse"></i>
+                          </span>
+                        </div>
+                        <div class="panel-body">
+                          <h4 class="media-heading">Cursos</h4>
+                          <a href="" ng-click="AlumCtrl.irGestionarCurso()" class="btn btn-success"><i class="fa fa-mail-forward"></i>  Entrar</a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-4">
+                  <div class="card">
+                    <div class="card-header">
+                      <div class="row">
+                        <h3> Gestión de asignaciones: </h3>
+                      </div>
+                    </div>
+                    <div class="card-body">
+                      <div class="panel panel-default text-center">
+                        <div class="panel-heading">
+                          <span class="fa-stack fa-3x">
+                            <i class="fa fa-circle fa-stack-2x text-primary"></i>
+                            <i class="fa fa-list-alt fa-stack-1x fa-inverse"></i>
+                          </span>
+                        </div>
+                        <div class="panel-body">
+                          <h4 class="media-heading">Asignaciones</h4>
+                          <a href="" ng-click="AlumCtrl.irGestionarAsignacion()" class="btn btn-success"><i class="fa fa-mail-forward"></i>  Entrar</a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="col-md-4">
+                  <div class="card">
+                    <div class="card-header">
+                      <div class="row">
+                        <h3> Gestión de usuarios: </h3>
+                      </div>
+                    </div>
+                    <div class="card-body">
+                      <div class="panel panel-default text-center">
+                        <div class="panel-heading">
+                          <span class="fa-stack fa-3x">
+                            <i class="fa fa-circle fa-stack-2x text-primary"></i>
+                            <i class="fa fa-group fa-stack-1x fa-inverse"></i>
+                          </span>
+                        </div>
+                        <div class="panel-body">
+                          <h4 class="media-heading">Usuarios</h4>
+                          <a href="" ng-click="AlumCtrl.irGestionarUsuarios()" class="btn btn-success"><i class="fa fa-mail-forward"></i>  Entrar</a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- <div class="col-4">
+                  <div class="card">
+                    <div class="card-header">
+                      <div class="row">
+                        <h3> Gestión de docentes: </h3>
+                      </div>
+                    </div>
+                    <div class="card-body">
+                      <div class="col-md-12">
+                        <div class="row-md-12 p-t-10 p-b-10" align="center">
+                          <button class="btn btn-default waves-effect bgm-blue" style="width: 220px;" ng-click = "ctrl.crearCurso()" ><i class="fa fa-plus"></i> Crear cursos</button>
+                        </div>
+                        <div class="row-md-12 p-t-10 p-b-10" align="center">
+                          <button class="btn btn-default waves-effect bgm-blue" style="width: 220px;" ng-click = "ctrl.listarCursos()" ><i class="fa fa-list-ul"></i> Listar cursos por ciclo</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div> -->
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+
+    </div>
+  </div>
+</section>
