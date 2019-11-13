@@ -12,13 +12,15 @@
   $correo = $_GET['correo'];
   $telefono = $_GET['telefono'];
   $direccion = $_GET['direccion'];
+  $nacimiento = $_GET['nacimiento'];
+  $genero = $_GET['genero'];
 
   // $username = mysqli_real_escape_string($con, $data->username);
   $con = mysqli_connect('127.0.0.1', 'root', '', 'SGA_SAN_NICOLAS') or die ( "Upps! Pues va a ser que no se ha podido conectar a la base de datos" );
   // echo json_encode($query);
   $tildes = $con->query("SET NAMES 'utf8'"); //Para que se muestren las tildes correctamente
   // $query = "select * from usuarios where NombreUsuario = '$username' and PassUsuario = '$password'";
-  $query = "insert into docente values (uuid(), '$dni', upper('$nombres'), upper('$apellidos'), 'SIN CÉDULA', '$correo', '$telefono', upper('$direccion'), 1)";
+  $query = "insert into docente values (uuid(), '$dni', upper('$nombres'), upper('$apellidos'), 'SIN CÉDULA', '$correo', '$telefono', upper('$direccion'), '$nacimiento', '$genero', now(), 1)";
   // echo json_encode("$query");
   //
   try {

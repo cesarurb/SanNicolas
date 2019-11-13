@@ -49,7 +49,13 @@ function($scope, $state, NgTableParams, $location, $http, $cookies){
   }
 
   ctrl.agregarDocente = function() {
-    $http.get("./app/SGA/administrador/gestionDocentes/insertarDocente.php",{params: {dni: ctrl.docente.dni, nombres: ctrl.docente.nombres, apellidos: ctrl.docente.apellidos, correo: ctrl.docente.correo, telefono: ctrl.docente.telefono, direccion: ctrl.docente.direccion}})
+    month = ctrl.docente.nacimiento.getMonth();
+    if (month < 9) {
+      month = parseInt(month) + 1
+      month = '0' + month;
+    }
+    var fecha = ctrl.docente.nacimiento.getFullYear() + '-' + month + '-' + ctrl.docente.nacimiento.getDate();
+    $http.get("./app/SGA/administrador/gestionDocentes/insertarDocente.php",{params: {dni: ctrl.docente.dni, nombres: ctrl.docente.nombres, apellidos: ctrl.docente.apellidos, correo: ctrl.docente.correo, telefono: ctrl.docente.telefono, direccion: ctrl.docente.direccion, nacimiento: fecha, genero: ctrl.docente.genero}})
     .then(function (response) {
       // console.log(response);
       if (response.data == 'HECHO SIN ERRORES') {
@@ -108,6 +114,11 @@ function($scope, $state, NgTableParams, $location, $http, $cookies){
     ctrl.docente.correo = docente.correo;
     ctrl.docente.telefono = docente.telefono;
     ctrl.docente.direccion = docente.direccion;
+    var anio = docente.nacimiento.substr(0,4);
+    var mes = parseInt(docente.nacimiento.substr(5,2))-1;
+    var dia = docente.nacimiento.substr(8,2);
+    ctrl.docente.nacimiento = new Date(anio, mes, dia);
+    ctrl.docente.genero = docente.genero;
     ctrl.disableDocente = true;
   }
 
@@ -119,6 +130,8 @@ function($scope, $state, NgTableParams, $location, $http, $cookies){
     ctrl.docente.correo = "";
     ctrl.docente.direccion = "";
     ctrl.docente.telefono = "";
+    ctrl.docente.nacimiento = null;
+    ctrl.docente.genero = null;
     ctrl.disableDocente = false;
   }
 

@@ -51,10 +51,41 @@
               </div>
               <div class="col-sm-6">
                 <div class="form-group">
+                  <label class="label-letra-prometeo col-sm-4 control-label m-t-10 m-b-0">Fecha de nacimiento<strong class="text-danger">*</strong>: </label>
+                  <div class="col-sm-10">
+                    <div class="fg-line">
+                      <input type="date" class="form-control input-sm" placeholder="Ingrese la fecha de nacimiento del docente" ng-model = "GDCtrl.docente.nacimiento" ng-readonly="GDCtrl.disableDocente">
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-sm-6">
+                <div class="form-group">
+                  <label class="label-letra-prometeo col-sm-4 control-label m-t-10 m-b-0">Género<strong class="text-danger">*</strong>: </label>
+                  <div class="col-sm-10">
+                    <div class="fg-line">
+                      <div class="select">
+                          <select class="form-control"
+                            placeholder="Seleccione un género"
+                            ng-model="GDCtrl.docente.genero"
+                            ng-readonly="GDCtrl.disableDocente">
+                            <option value="" disabled selected hidden class="placeholder-select">Seleccione un género...</option>
+                            <option value="MASCULINO" class="placeholder-select">MASCULINO</option>
+                            <option value="FEMENINO" class="placeholder-select">FEMENINO</option>
+                          </select>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-sm-6">
+                <div class="form-group">
                   <label class="label-letra-prometeo col-sm-4 control-label m-t-10 m-b-0">Correo<strong class="text-danger">*</strong>: </label>
                   <div class="col-sm-10">
                     <div class="fg-line">
-                      <input class="form-control input-sm" type="email" placeholder="Ingrese el correo del docente" ng-model = "GDCtrl.docente.correo" ng-readonly="GDCtrl.disableDocente">
+                      <input class="form-control input-sm" placeholder="Ingrese el correo del docente" ng-model = "GDCtrl.docente.correo" ng-readonly="GDCtrl.disableDocente">
                     </div>
                   </div>
                 </div>

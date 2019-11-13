@@ -133,7 +133,6 @@ function($scope, $state, NgTableParams, $location, $http, $cookies){
       month = '0' + month;
     }
     var fecha = ctrl.alumnoNuevo.nacimiento.getFullYear() + '-' + month + '-' + ctrl.alumnoNuevo.nacimiento.getDate();
-    console.log(ctrl.alumnoNuevo);
     $http.get("./app/SGA/administrador/gestionAlumnos/insertarAlumno.php",{params: {dni: ctrl.alumnoNuevo.dni, nombres: ctrl.alumnoNuevo.nombres, apellidos: ctrl.alumnoNuevo.apellidos, correo: ctrl.alumnoNuevo.correo, telefono: ctrl.alumnoNuevo.telefono, direccion: ctrl.alumnoNuevo.direccion, nacimiento: fecha, genero: ctrl.alumnoNuevo.genero, grupoSanguineo: ctrl.alumnoNuevo.grupoSanguineo, apoderado: ctrl.apoderado.id}})
     .then(function (response) {
       console.log(response);
