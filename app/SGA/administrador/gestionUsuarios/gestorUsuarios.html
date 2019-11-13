@@ -1,0 +1,133 @@
+<div class="row">
+  <div class="col-md-12">
+    <nav aria-label="breadcrumb">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="" ng-click="GUCtrl.irHome()">Inicio</a></li>
+        <li class="breadcrumb-item active">Gestionar Usuario</li>
+      </ol>
+    </nav>
+    <div class="card">
+      <div class="card-header">
+        <h1>GESTIÓN DE USUARIOS</h1>
+      </div>
+      <div class="card-body">
+        <div class="card">
+          <div class="card-header">
+            <h2>Datos del usuario</h2>
+          </div>
+          <div class="card-body">
+            <div class="row">
+              <div class="col-sm-6">
+                <div class="form-group">
+                  <label class="label-letra-prometeo col-sm-4 control-label m-t-10 m-b-0">Nombres<strong class="text-danger">*</strong>: </label>
+                  <div class="col-sm-10">
+                    <div class="fg-line">
+                      <input class="form-control input-sm" placeholder="NOMBRES DEL USUARIO" ng-model = "GUCtrl.usuario.nombres" readonly>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-sm-6">
+                <div class="form-group">
+                  <label class="label-letra-prometeo col-sm-4 control-label m-t-10 m-b-0">Apellidos<strong class="text-danger">*</strong>: </label>
+                  <div class="col-sm-10">
+                    <div class="fg-line">
+                      <input class="form-control input-sm" placeholder="APELLIDOS DEL USUARIO" ng-model = "GUCtrl.usuario.apellidos" readonly>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-sm-6">
+                <div class="form-group">
+                  <label class="label-letra-prometeo col-sm-4 control-label m-t-10 m-b-0">Nombre de usuario<strong class="text-danger">*</strong>: </label>
+                  <div class="col-sm-10">
+                    <div class="fg-line">
+                      <input class="form-control input-sm" placeholder="USUARIO DE ACCESO" ng-model = "GUCtrl.usuario.nombreUsuario" readonly>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-sm-6">
+                <div class="form-group">
+                  <label class="label-letra-prometeo col-sm-4 control-label m-t-10 m-b-0">Contraseña<strong class="text-danger">*</strong>: </label>
+                  <div class="col-sm-10">
+                    <div class="fg-line">
+                      <button class="btn btn-md btn-primary btn-block" ng-click="GUCtrl.contrasenia_dni()">Reestablecer contraseña</button>
+                      <!-- <input class="form-control input-sm" placeholder="Ingrese los apellidos del docente" ng-model = "GUCtrl.docente.apellidos" ng-readonly="GUCtrl.disableDocente"> -->
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-sm-6">
+                <div class="form-group">
+                  <label class="label-letra-prometeo col-sm-4 control-label m-t-10 m-b-0">DNI<strong class="text-danger">*</strong>: </label>
+                  <div class="col-sm-10">
+                    <div class="fg-line">
+                      <input class="form-control input-sm"  placeholder="DNI DEL USUARIO" ng-model = "GUCtrl.usuario.dni" readonly>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-sm-6">
+                <div class="form-group">
+                  <label class="label-letra-prometeo col-sm-4 control-label m-t-10 m-b-0">Rol<strong class="text-danger">*</strong>: </label>
+                  <div class="col-sm-10">
+                    <div class="fg-line">
+                      <input class="form-control input-sm"  placeholder="ROL DE USUARIO" ng-model = "GUCtrl.usuario.rol" readonly>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-header">
+            <h2>Lista de usuarios activos</h2>
+          </div>
+          <div class="card-body">
+            <div class="row">
+              <div class="col-md-12">
+                <div class="table-responsive p-r-0">
+                  <table ng-table="GUCtrl.tablaUsuarios" class="table table-bordered">
+                    <tr ng-repeat="usuario in GUCtrl.usuariosLista">
+                      <td data-title="'Nro.'" align="center" width="5%">
+                        {{$index + 1}}
+                      </td>
+                      <td data-title = "'DNI'" align="center">
+                        {{usuario.dni}}
+                      </td>
+                      <td data-title="'Nombre'">
+                        {{usuario.Nombres + ' ' + usuario.Apellidos}}
+                      </td>
+                      <td data-title="'Usuario'">
+                        {{usuario.NombreUsuario}}
+                      </td>
+                      <td data-title="'Rol'">
+                        {{usuario.rol}}
+                      </td>
+                      <td data-title="'Ver info'" align="center" width="7%">
+                        <a href="" style="padding:3px;" ng-click="GUCtrl.verUsuario(usuario)">
+                          <i class="fas fa-eye"></i>
+                        </a>
+                      </td>
+                      <td data-title="'Eliminar'" align="center" width="7%">
+                        <a href="" style="padding:3px;" ng-click="GUCtrl.eliminarUsuario(usuario)">
+                          <i class="fas fa-trash-alt"></i>
+                        </a>
+                      </td>
+                    </tr>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -23,6 +23,14 @@ function($scope, $state, NgTableParams, $location, $http, $cookies){
     $state.go('inicioAdmin');
   }
 
+  ctrl.revisarDNI = function () {
+    if (isNaN(ctrl.docente.dni)) {
+      var tamañoDNI = ctrl.docente.dni.length;
+      ctrl.docente.dni = ctrl.docente.dni.substr(0,tamañoDNI-1);
+      swal("¡Opss!", "El DNI debe ser sólo de 8 dígitos." , "error");
+    }
+  }
+
   ctrl.buscarDocentes = function () {
     // console.log(ctrl.apoderado);
     $http.get('./app/SGA/administrador/gestionDocentes/buscarDocentes.php',{params: {}}

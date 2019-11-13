@@ -10,7 +10,7 @@ function($scope, $state, NgTableParams, $location, $http, $cookies){
   ctrl.alumno = [];
   ctrl.apoderado = {
     id: "",
-    dni: "",
+    dni: null,
     nombres: "",
     apellidos: "",
     correo: "",
@@ -30,19 +30,21 @@ function($scope, $state, NgTableParams, $location, $http, $cookies){
     $state.go('inicioAdmin');
   }
 
-  // ctrl.contrasenia_dni = function (usuario) {
-  //   var sql = "update USUARIO set pass_word = '" + usuario.dni + "' where id = '" + usuario.id + "'";
-  //   $http.get("./app/PESI/administrador/usuarios/gestorUsuariosInsertar.php",{params: {sql: sql}})
-  //   .then(function (response) {
-  //     if (response.data != "Error") {
-  //       ctrl.Listadeusuario = false;
-  //       ctrl.cancelar();
-  //       swal("¡Bien hecho!", "La contraseña se reestableció exitosamente" , "success");
-  //     } else {
-  //       swal("¡Opss!", "No se pudo reestablecer la contraseña." , "error");
-  //     }
-  //   });
-  // }
+  ctrl.revisarDNIAlumno = function () {
+    if (isNaN(ctrl.alumnoNuevo.dni)) {
+      var tamañoDNI = ctrl.alumnoNuevo.dni.length;
+      ctrl.alumnoNuevo.dni = ctrl.alumnoNuevo.dni.substr(0,tamañoDNI-1);
+      swal("¡Opss!", "El DNI del alumno debe ser sólo de 8 dígitos." , "error");
+    }
+  }
+
+  ctrl.revisarDNIApoderado = function () {
+    if (isNaN(ctrl.apoderado.dni)) {
+      var tamañoDNI = ctrl.apoderado.dni.length;
+      ctrl.apoderado.dni = ctrl.apoderado.dni.substr(0,tamañoDNI-1);
+      swal("¡Opss!", "El DNI del apoderado debe ser sólo de 8 dígitos." , "error");
+    }
+  }
 
   ctrl.buscarApoderado = function () {
     // console.log(ctrl.apoderado);
@@ -114,7 +116,6 @@ function($scope, $state, NgTableParams, $location, $http, $cookies){
             } catch (e) {
               swal("¡Opss!", "Ocurrió un error: " + e, "error");
             }
-            swal("¡Opss!", "No se encuentra ningún apoderado con ese DNI.", "error");
           }
         })
       }

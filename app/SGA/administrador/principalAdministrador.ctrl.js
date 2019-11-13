@@ -19,7 +19,7 @@ function($scope, $state, $cookies){
   }
 
   ctrl.irGestionarUsuarios = function() {
-    // $state.go('gestionar-curso');
+    $state.go('gestionar-usuario');
   }
 
   // ctrl.irLogin = function() {

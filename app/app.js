@@ -43,32 +43,12 @@ mySGAApp.config(['stateHelperProvider', '$urlRouterProvider', function(stateHelp
             url: '/gestionAsignacion',
             templateUrl: 'app/SGA/administrador/gestionAsignaciones/gestorAsignaciones.html',
             controller: 'gestorAsignacionesCtrl as GAsCtrl'
-          //   children: [
-          //     {
-          //       name: 'gestionEmpresas',
-          //       url: '/gestionEmpresas',
-          //       templateUrl: 'app/SGA/administrador/empresas/gestorEmpresas.html',
-          //       controller: 'gestorEmpresasCtrl as GECtrl'
-          //     },
-          //     {
-          //       name: 'matrizFODA',
-          //       url: '/matrizFODA/:empresaID',
-          //       templateUrl: 'app/SGA/administrador/empresas/matrizFoda/matrizFoda.html',
-          //       controller: 'matrizFodaCtrl as MFCtrl'
-          //     },
-          //     {
-          //       name: 'matrizPvsA',
-          //       url: '/matrizPvsA/:empresaID',
-          //       templateUrl: 'app/SGA/administrador/empresas/matrizProcesosVSAreas/matrizPvsA.html',
-          //       controller: 'matrizPvsACtrl as MPCtrl'
-              // },
-              // {
-              //   name: 'matrizVer',
-              //   url: '/matrizVer/:empresaID',
-              //   templateUrl: 'app/SGA/administrador/empresas/matrizFoda/matrizFodaLectura.html',
-              //   controller: 'matrizFodaCtrl as MFCtrl'
-            //   }
-            // ]
+          },
+          {
+            name: 'gestionar-usuario',
+            url: '/gestionUsuario',
+            templateUrl: 'app/SGA/administrador/gestionUsuarios/gestorUsuarios.html',
+            controller: 'gestorUsuariosCtrl as GUCtrl'
           }
         ]
       // },

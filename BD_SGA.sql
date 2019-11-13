@@ -1,3 +1,5 @@
+drop database if exists SGA_SAN_NICOLAS;
+
 create database SGA_SAN_NICOLAS;
 use SGA_SAN_NICOLAS;
 SET AUTOCOMMIT=1;
@@ -81,7 +83,7 @@ CREATE TABLE `docente` (
 -- Volcado de datos para la tabla `docentes`
 -- --------------------------------------------------------
 INSERT INTO `docente` VALUES
-(uuid(), '12345678','Luis', 'Noriega', 'SIN CÉDULA', 'jorgeazabache@hotmai.com', '987654321', 'AV. SU CASA', 1);
+(uuid(), '12345678','JORGE', 'AZABACHE', 'SIN CÉDULA', 'jorgeazabache@hotmai.com', '987654321', 'AV. SU CASA', 1);
 
 
 -- --------------------------------------------------------
@@ -158,7 +160,7 @@ CREATE TABLE `alumno` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 insert into alumno values 
-(uuid(), '74660603','CESAR', 'URBINA', 'curbina@unitru.edu.pe', '987654321', 'depa', '7afe7e9c-011b-11ea-afdd-e4e74986', 1);
+(uuid(), '87654321','LUIS', 'TIRADO', 'ltirado@unitru.edu.pe', '987654321', 'depa', '7afe7e9c-011b-11ea-afdd-e4e74986', 1);
 
 
 -- --------------------------------------------------------
@@ -295,6 +297,7 @@ CREATE TABLE `usuario` (
   `Nombres` varchar(50) NOT NULL,
   `Apellidos` varchar(50) NOT NULL,
   -- `Foto` varchar(100) DEFAULT NULL,
+  dni char(8) not null,
   `estado` int(1) NOT NULL,
   FOREIGN KEY (`idRol`) REFERENCES ROL(`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -303,17 +306,15 @@ CREATE TABLE `usuario` (
 -- Volcado de datos para la tabla `usuario`
 -- --------------------------------------------------------
 INSERT INTO `usuario` VALUES
-(uuid(),'ADMIN', '123', 'b1f27357-018e-11ea-afdd-e4e74986', 'ADMIN', 'ADMIN', 1),
-(uuid(), 'Jorge', '123', 'b1f565d0-018e-11ea-afdd-e4e74986', 'JORGE', 'AZABACHE', 1),
-(uuid(), 'Lusho', '123', 'b1f56711-018e-11ea-afdd-e4e74986', 'LUIS', 'TIRADO', 1);
+(uuid(),'ADMIN', '123', 'b1f27357-018e-11ea-afdd-e4e74986', 'ADMIN', 'ADMIN', '00000000', 1),
+(uuid(), 'Jorge', '123', 'b1f565d0-018e-11ea-afdd-e4e74986', 'JORGE', 'AZABACHE', '12345678', 1),
+(uuid(), 'Lusho', '123', 'b1f56711-018e-11ea-afdd-e4e74986', 'LUIS', 'TIRADO', '87654321', 1);
 
 
 -- --------------------------------------------------------
 -- Estructura de tabla para la tabla `years_academicos`
+-- --------------------------------------------------------
 CREATE TABLE `years_academicos` (
   `idYearAcademico` int(11) NOT NULL,
   `NombreYear` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
--- commit
-

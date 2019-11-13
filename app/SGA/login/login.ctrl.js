@@ -14,7 +14,7 @@ angular.module('mySGAApp').controller("loginCtrl", ['$scope', '$state', '$locati
       },
       data: 'username='+ username + '&password=' + password
     }).then(function (response) {
-      console.log(response.data)
+      // console.log(response.data)
       try {
         response.data.forEach(function(element) {
           if(element.status == 'loggedin') {

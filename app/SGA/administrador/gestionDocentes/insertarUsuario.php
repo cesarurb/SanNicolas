@@ -16,7 +16,7 @@
   // echo json_encode($query);
   $tildes = $con->query("SET NAMES 'utf8'"); //Para que se muestren las tildes correctamente
   // $query = "select * from usuarios where NombreUsuario = '$username' and PassUsuario = '$password'";
-  $query = "insert into usuario values (uuid(), '$correo', '$dni', 'b1f56711-018e-11ea-afdd-e4e74986', upper('$nombres'), upper('$apellidos'),1)";
+  $query = "insert into usuario values (uuid(), '$correo', '$dni', 'b1f56711-018e-11ea-afdd-e4e74986', upper('$nombres'), upper('$apellidos'), $dni, 1)";
   // echo json_encode("$query");
   //
   try {

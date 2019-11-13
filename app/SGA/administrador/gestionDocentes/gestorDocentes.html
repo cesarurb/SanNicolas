@@ -44,7 +44,7 @@
                   <label class="label-letra-prometeo col-sm-4 control-label m-t-10 m-b-0">DNI<strong class="text-danger">*</strong>: </label>
                   <div class="col-sm-10">
                     <div class="fg-line">
-                      <input class="form-control input-sm" placeholder="Ingrese el DNI del docente" ng-model = "GDCtrl.docente.dni" ng-readonly="GDCtrl.disableDocente">
+                      <input type="tel" maxlength="8" title="Debe poner 8 números" class="form-control input-sm"  placeholder="Ingrese el DNI del docente" ng-model = "GDCtrl.docente.dni" ng-readonly="GDCtrl.disableDocente" ng-change="GDCtrl.revisarDNI()">
                     </div>
                   </div>
                 </div>
@@ -54,7 +54,7 @@
                   <label class="label-letra-prometeo col-sm-4 control-label m-t-10 m-b-0">Correo<strong class="text-danger">*</strong>: </label>
                   <div class="col-sm-10">
                     <div class="fg-line">
-                      <input class="form-control input-sm" placeholder="Ingrese el correo del docente" ng-model = "GDCtrl.docente.correo">
+                      <input class="form-control input-sm" type="email" placeholder="Ingrese el correo del docente" ng-model = "GDCtrl.docente.correo" ng-readonly="GDCtrl.disableDocente">
                     </div>
                   </div>
                 </div>
@@ -66,7 +66,7 @@
                   <label class="label-letra-prometeo col-sm-4 control-label m-t-10 m-b-0">Tel&eacute;fono<strong class="text-danger">*</strong>: </label>
                   <div class="col-sm-10">
                     <div class="fg-line">
-                      <input class="form-control input-sm" placeholder="Ingrese el teléfono del docente" ng-model = "GDCtrl.docente.telefono">
+                      <input type="tel" class="form-control input-sm" placeholder="Ingrese el teléfono del docente" ng-model = "GDCtrl.docente.telefono">
                     </div>
                   </div>
                 </div>
