@@ -38,7 +38,7 @@ function($scope, $state, NgTableParams, $location, $http, $cookies){
   }
 
   ctrl.agregar = function() {
-    $http.get("./app/SGA/administrador/gestionAsignaciones/buscarAsignacion.php",{params: {docente: ctrl.asignacion.docente.id, curso: ctrl.asignacion.curso.id, anio: ctrl.asignacion.anio, turno: ctrl.asignacion.turno}})
+    $http.get("./app/SGA/administrador/gestionAsignaciones/buscarAsignacion.php",{params: {docente: ctrl.asignacion.docente.id, curso: ctrl.asignacion.curso.id, anio: ctrl.asignacion.anio, seccion: ctrl.asignacion.seccion.id}})
     .then(function (response) {
       if (response.data.status == 'Error') {
         // console.log(response.data);
@@ -50,7 +50,7 @@ function($scope, $state, NgTableParams, $location, $http, $cookies){
   }
 
   ctrl.agregarAsignacion = function() {
-    $http.get("./app/SGA/administrador/gestionAsignaciones/insertarAsignacion.php",{params: {docente: ctrl.asignacion.docente.id, curso: ctrl.asignacion.curso.id, anio: ctrl.asignacion.anio, turno: ctrl.asignacion.turno}})
+    $http.get("./app/SGA/administrador/gestionAsignaciones/insertarAsignacion.php",{params: {docente: ctrl.asignacion.docente.id, curso: ctrl.asignacion.curso.id, anio: ctrl.asignacion.anio, seccion: ctrl.asignacion.seccion.id}})
     .then(function (response) {
       // console.log(response);
       if (response.data == 'HECHO SIN ERRORES') {
@@ -110,6 +110,22 @@ function($scope, $state, NgTableParams, $location, $http, $cookies){
       } else {
         ctrl.gradosLista = null;
         swal("¡Opss!", "No se encuentró ningún grado para mostrar.", "error");
+      }
+    })
+  }
+
+  ctrl.obtenerSecciones = function () {
+    $http.get('./app/SGA/administrador/gestionAsignaciones/buscarSecciones.php',{params: {grado: ctrl.asignacion.grado.id, anio: ctrl.asignacion.anio}}
+    ).then(function (response) {
+      if (response.data.status != 'Error') {
+        try {
+          ctrl.seccionesLista = response.data;
+        } catch (e) {
+          swal("¡Opss!", "Ocurrió un error." + e , "error");
+        }
+      } else {
+        ctrl.seccionesLista = null;
+        swal("¡Opss!", "No se encuentró ninguna sección de ese grado y año para mostrar.", "error");
       }
     })
   }

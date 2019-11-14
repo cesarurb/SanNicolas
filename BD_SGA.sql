@@ -33,6 +33,7 @@ CREATE TABLE `SECCION` (
   `seccion` CHAR(1) NOT NULL,
   `idGrado` VARCHAR(32) NOT NULL,
   anio CHAR(4) NOT NULL,
+  `turno` VARCHAR(20) NOT NULL,
   estado int(1) NOT NULL,
   FOREIGN KEY (idGrado) REFERENCES GRADO(id)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -41,13 +42,13 @@ CREATE TABLE `SECCION` (
 -- Volcado de datos para la tabla `SECCION`
 -- --------------------------------------------------------
 INSERT INTO `SECCION` VALUES
-(uuid(), 'A', '920e7df3-01db-11ea-afdd-e4e749869830', '2019', 1),
-(uuid(), 'A', '9620328d-01db-11ea-afdd-e4e749869830', '2019', 1),
-(uuid(), 'A', '9a6d96ad-01db-11ea-afdd-e4e749869830', '2019', 1),
-(uuid(), 'A', '9ea4f72b-01db-11ea-afdd-e4e749869830', '2019', 1),
-(uuid(), 'B', '9ea4f72b-01db-11ea-afdd-e4e749869830', '2019', 1),
-(uuid(), 'A', 'a29c371e-01db-11ea-afdd-e4e749869830', '2019', 1),
-(uuid(), 'B', 'a29c371e-01db-11ea-afdd-e4e749869830', '2019', 1);
+(uuid(), 'A', '920e7df3-01db-11ea-afdd-e4e749869830', '2019', 'MAÑANA', 1),
+(uuid(), 'A', '9620328d-01db-11ea-afdd-e4e749869830', '2019', 'MAÑANA', 1),
+('64a15e02-0698-11ea-9378-e4e74986', 'A', '9a6d96ad-01db-11ea-afdd-e4e749869830', '2019', 'MAÑANA', 1),
+(uuid(), 'A', '9ea4f72b-01db-11ea-afdd-e4e749869830', '2019', 'MAÑANA', 1),
+(uuid(), 'B', '9ea4f72b-01db-11ea-afdd-e4e749869830', '2019', 'TARDE', 1),
+(uuid(), 'A', 'a29c371e-01db-11ea-afdd-e4e749869830', '2019', 'MAÑANA', 1),
+(uuid(), 'B', 'a29c371e-01db-11ea-afdd-e4e749869830', '2019', 'TARDE', 1);
 
 
 -- ----------------------------------------------------------
@@ -66,7 +67,7 @@ CREATE TABLE `CURSO` (
 -- Volcado de datos para la tabla `CURSO`
 -- --------------------------------------------------------
 INSERT INTO `CURSO` VALUES
-(uuid(), 'MATEMÁTICAS','a29c371e-01db-11ea-afdd-e4e74986', NULL, 1),
+('64e6d199-0698-11ea-9378-e4e74986', 'MATEMÁTICAS','a29c371e-01db-11ea-afdd-e4e74986', NULL, 1),
 (uuid(), 'MATEMÁTICAS','920e7df3-01db-11ea-afdd-e4e74986', NULL, 1),
 (uuid(), 'MATEMÁTICAS','9620328d-01db-11ea-afdd-e4e74986', NULL, 1),
 (uuid(), 'MATEMÁTICAS','9a6d96ad-01db-11ea-afdd-e4e74986', NULL, 1),
@@ -112,7 +113,7 @@ CREATE TABLE `docente` (
 -- Volcado de datos para la tabla `docentes`
 -- --------------------------------------------------------
 INSERT INTO `docente` VALUES
-(uuid(), '12345678','JORGE', 'AZABACHE', 'SIN CÉDULA', 'jorgeazabache@hotmai.com', '987654321', 'AV. SU CASA', '1998-04-27', 'MASCULINO', NOW(), 1);
+('65d37ef3-0698-11ea-9378-e4e74986', '12345678','JORGE', 'AZABACHE', 'SIN CÉDULA', 'jorgeazabache@hotmai.com', '987654321', 'AV. SU CASA', '1998-04-27', 'MASCULINO', NOW(), 1);
 
 
 -- --------------------------------------------------------
@@ -125,13 +126,14 @@ CREATE TABLE `ASIGNACION` (
   `idCurso` VARCHAR(32) NOT NULL,
   `anio` CHAR(4) NOT NULL,
   -- `idGrupo` int(11) NOT NULL,
-  -- `idTurno` int(11) NOT NULL,
-  `turno` VARCHAR(20) NOT NULL,
+  `idSeccion` VARCHAR(32) NOT NULL,
   `estado` int(1) NOT NULL,
   -- `NumeroAsignacion` int(11) NOT NULL
   foreign key (idDocente) REFERENCES DOCENTE(id),
   foreign key (idCurso) REFERENCES CURSO(id)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+insert into asignacion values (uuid(), '65d37ef3-0698-11ea-9378-e4e74986', '64e6d199-0698-11ea-9378-e4e74986', '2019', '64a15e02-0698-11ea-9378-e4e74986', 1);
 
 
 -- --------------------------------------------------------

@@ -40,7 +40,7 @@
                   <label class="label-letra-prometeo col-sm-4 control-label m-t-10 m-b-0">Año<strong class="text-danger">*</strong>: </label>
                   <div class="col-sm-10">
                     <div class="fg-line">
-                      <input class="form-control input-sm" placeholder="Ingrese el año académico" ng-model = "GAsCtrl.asignacion.anio">
+                      <input class="form-control input-sm" placeholder="Ingrese el año académico" ng-model = "GAsCtrl.asignacion.anio" ng-change="GAsCtrl.obtenerSecciones();">
                     </div>
                   </div>
                 </div>
@@ -58,7 +58,7 @@
                           placeholder="Seleccione un grado"
                           ng-model="GAsCtrl.asignacion.grado"
                           ng-options="grado as grado.nombre for grado in GAsCtrl.gradosLista"
-                          ng-change="GAsCtrl.obtenerCursos()">
+                          ng-change="GAsCtrl.obtenerCursos(); GAsCtrl.obtenerSecciones();">
                           <option value="" disabled selected hidden class="placeholder-select">Seleccione un grado...</option>
                         </select>
                       </div>
@@ -91,18 +91,17 @@
             <div class="row">
               <div class="col-sm-6">
                 <div class="form-group">
-                  <label class="label-letra-prometeo col-sm-4 control-label m-t-10 m-b-0">Turno<strong class="text-danger">*</strong>: </label>
+                  <label class="label-letra-prometeo col-sm-4 control-label m-t-10 m-b-0">Seccion<strong class="text-danger">*</strong>: </label>
                   <div class="col-sm-10">
                     <div class="fg-line">
                       <!-- <input class="form-control input-sm" placeholder="Ingrese el teléfono del docente" ng-model = "GAsCtrl.docente.telefono"> -->
                       <div class="select">
-                          <select class="form-control"
-                            placeholder="Seleccione un turno"
-                            ng-model="GAsCtrl.asignacion.turno">
-                            <option value="" disabled selected hidden class="placeholder-select">Seleccione un turno...</option>
-                            <option value="MAÑANA" class="placeholder-select">MAÑANA</option>
-                            <option value="TARDE" class="placeholder-select">TARDE</option>
-                          </select>
+                        <select class="form-control"
+                          placeholder="Seleccione un curso"
+                          ng-model="GAsCtrl.asignacion.seccion"
+                          ng-options="seccion as seccion.nombre for seccion in GAsCtrl.seccionesLista">
+                          <option value="" disabled selected hidden class="placeholder-select">Seleccione una seccion...</option>
+                        </select>
                       </div>
                     </div>
                   </div>
@@ -164,6 +163,9 @@
                       </td>
                       <td data-title="'Grado'">
                         {{asignacion.grado}}
+                      </td>
+                      <td data-title="'Seccion'">
+                        {{asignacion.seccion}}
                       </td>
                       <td data-title="'Turno'">
                         {{asignacion.turno}}

@@ -10,7 +10,7 @@
   // $username = mysqli_real_escape_string($con, $data->username);
 
   $tildes = $con->query("SET NAMES 'utf8'"); //Para que se muestren las tildes correctamente
-  $query = "select distinct anio FROM asignacion where estado = 1 order by anio desc";
+  $query = "select distinct anio FROM seccion where estado = 1 order by anio desc";
   //
   $result = mysqli_query($con, $query) or die ( "Algo ha ido mal en la consulta a la base de datos");
   // //
