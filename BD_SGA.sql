@@ -213,22 +213,6 @@ CREATE TABLE `evaluaciones` (
   `FechaEvaluacion` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
--- --------------------------------------------------------
--- Estructura de tabla para la tabla `grupos`
--- --------------------------------------------------------
-CREATE TABLE `grupos` (
-  `idGrupo` int(11) NOT NULL,
-  `NumeroGrupo` varchar(50) NOT NULL,
-  `NombreGrupo` varchar(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
--- --------------------------------------------------------
--- Estructura de tabla para la tabla `horarios`
--- --------------------------------------------------------
-CREATE TABLE `horarios` (
-  `idHorario` int(11) NOT NULL,
-  `NombreHorario` varchar(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 -- Estructura de tabla para la tabla `inscripciones_asignaturas`
@@ -241,18 +225,18 @@ CREATE TABLE `inscripciones_asignaturas` (
   `observaciones` varchar(250) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+
 -- --------------------------------------------------------
--- Estructura de tabla para la tabla `material_didactico`
+-- Estructura de tabla para la tabla `matricula`
 -- --------------------------------------------------------
-CREATE TABLE `material_didactico` (
-  `idMaterialDidactico` int(11) NOT NULL,
-  `Descripcion` varchar(200) NOT NULL,
-  `Archivo` varchar(200) NOT NULL,
-  `CodigoMaterial` int(11) NOT NULL,
-  `Fecha_subida` date DEFAULT NULL,
-  `idNumeroAsignacion` int(11) NOT NULL,
-  `idDocente` int(11) NOT NULL
+CREATE TABLE `MATRICULA` (
+  `id` VARCHAR(32) NOT NULL,
+  `idAlumno` VARCHAR(32) NOT NULL,
+  `idSeccion` VARCHAR(32) NOT NULL,
+  `anio` CHAR(4) NOT NULL,
+  `fechaMatricula` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
 
 -- --------------------------------------------------------
 -- Estructura de tabla para la tabla `mensajes`
@@ -264,6 +248,7 @@ CREATE TABLE `mensajes` (
   `Mensaje` varchar(500) NOT NULL,
   `FechaEnvio` date DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
 
 -- --------------------------------------------------------
 -- Estructura de tabla para la tabla `Rol`
@@ -344,12 +329,3 @@ INSERT INTO `usuario` VALUES
 (uuid(),'ADMIN', '123', 'b1f27357-018e-11ea-afdd-e4e74986', 'ADMIN', 'ADMIN', '00000000', 1),
 (uuid(), 'Jorge', '123', 'b1f565d0-018e-11ea-afdd-e4e74986', 'JORGE', 'AZABACHE', '12345678', 1),
 (uuid(), 'Lusho', '123', 'b1f56711-018e-11ea-afdd-e4e74986', 'LUIS', 'TIRADO', '87654321', 1);
-
-
--- --------------------------------------------------------
--- Estructura de tabla para la tabla `years_academicos`
--- --------------------------------------------------------
-CREATE TABLE `years_academicos` (
-  `idYearAcademico` int(11) NOT NULL,
-  `NombreYear` varchar(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;

@@ -1,0 +1,138 @@
+<div class="row">
+  <div class="col-md-12">
+    <nav aria-label="breadcrumb">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="" ng-click="GSCtrl.irHome()">Inicio</a></li>
+        <li class="breadcrumb-item active">Gestionar sección</li>
+      </ol>
+    </nav>
+    <div class="card">
+      <div class="card-header">
+        <h1>GESTIÓN DE SECCIONES</h1>
+      </div>
+      <div class="card-body">
+        <div class="card">
+          <div class="card-header">
+            <h2>Datos de la sección</h2>
+          </div>
+          <div class="card-body">
+            <div class="row">
+              <div class="col-sm-6">
+                <div class="form-group">
+                  <label class="label-letra-prometeo col-sm-4 control-label m-t-10 m-b-0">Grado<strong class="text-danger">*</strong>: </label>
+                  <div class="col-sm-10">
+                    <div class="fg-line">
+                      <div class="select">
+                        <select class="form-control"
+                          placeholder="Seleccione un grado"
+                          ng-model="GSCtrl.seccion.grado"
+                          ng-options="grado as grado.nombre for grado in GSCtrl.gradosLista">
+                          <option value="" disabled selected hidden class="placeholder-select">Seleccione un grado...</option>
+                        </select>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-sm-6">
+                <div class="form-group">
+                  <label class="label-letra-prometeo col-sm-4 control-label m-t-10 m-b-0">Año<strong class="text-danger">*</strong>: </label>
+                  <div class="col-sm-10">
+                    <div class="fg-line">
+                      <input class="form-control input-sm" placeholder="Ingrese el año académico" ng-model = "GSCtrl.seccion.anio">
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-sm-6">
+                <div class="form-group">
+                  <label class="label-letra-prometeo col-sm-4 control-label m-t-10 m-b-0">Sección<strong class="text-danger">*</strong>: </label>
+                  <div class="col-sm-10">
+                    <div class="fg-line">
+                      <input class="form-control input-sm" placeholder="Ingrese la letra de la sección" ng-model = "GSCtrl.seccion.seccion">
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-sm-6">
+                <div class="form-group">
+                  <label class="label-letra-prometeo col-sm-4 control-label m-t-10 m-b-0">Turno<strong class="text-danger">*</strong>: </label>
+                  <div class="col-sm-10">
+                    <div class="fg-line">
+                      <!-- <input class="form-control input-sm" placeholder="Ingrese los apellidos del docente" ng-model = "GSCtrl.docente.apellidos" ng-readonly="GSCtrl.disableDocente"> -->
+                      <div class="select">
+                        <select class="form-control" ng-model="GSCtrl.seccion.turno">
+                          <option value="" disabled selected hidden class="placeholder-select">Seleccione un turno...</option>
+                          <option value="MAÑANA" class="placeholder-select">MAÑANA</option>
+                          <option value="TARDE" class="placeholder-select">TARDE</option>
+                        </select>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="card-footer">
+            <button class="btn btn-primary waves-effect float-right" ng-click = "GSCtrl.agregarSeccion()"><i class="fa fa-plus-circle"></i> Registrar Sección</button>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-header">
+            <div class="col-sm-8" style="float: left;">
+              <h2>Lista de secciones por año</h2>
+            </div>
+            <div class="col-sm-4" style="float: right;">
+              <div class="form-inline" style="float: right;">
+                <label class="label-letra-prometeo control-label m-t-10 m-b-0 m-r-10">Año: </label>
+                <!-- <div class="col-sm-8"> -->
+                  <div class="fg-line">
+                    <!-- <input class="form-control input-sm" placeholder="Ingrese los nombres del docente" ng-model = "GSCtrl.docente.nombres" ng-readonly="GSCtrl.disableDocente"> -->
+                    <div class="select">
+                      <select class="form-control"
+                        ng-model="GSCtrl.anio"
+                        ng-change="GSCtrl.cargarSecciones()"
+                        ng-options="anio as anio.anio for anio in GSCtrl.aniosLista">
+                      </select>
+                    </div>
+                  </div>
+                <!-- </div> -->
+              </div>
+            </div>
+          </div>
+          <div class="card-body">
+            <div class="row">
+              <div class="col-md-12">
+                <div class="table-responsive p-r-0">
+                  <table ng-table="GSCtrl.seccionesTabla" class="table table-bordered">
+                    <tr ng-repeat="seccion in GSCtrl.seccionesLista">
+                      <td data-title="'Nro.'" align="center" width="5%">
+                        {{$index + 1}}
+                      </td>
+                      <td data-title="'Grado'" align="center">
+                        {{seccion.grado}}
+                      </td>
+                      <td data-title="'Seccion'" align="center">
+                        {{seccion.seccion}}
+                      </td>
+                      <td data-title="'Turno'" align="center">
+                        {{seccion.turno}}
+                      </td>
+                      <td data-title="'Eliminar'" align="center" width="7%">
+                        <a href="" style="padding:3px;" ng-click="GSCtrl.eliminarSeccion(seccion)">
+                          <i class="fas fa-trash-alt"></i>
+                        </a>
+                      </td>
+                    </tr>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,10 +1,11 @@
 angular.module('mySGAApp').controller("gestorAsignacionesCtrl", ['$scope', '$state','NgTableParams', '$location', '$http', '$cookies',
 function($scope, $state, NgTableParams, $location, $http, $cookies){
   var ctrl = this;
+  var fechaHoy = new Date();
   ctrl.asignacion = {
     id: "",
     docente: null,
-    anio: '2019',
+    anio: fechaHoy.getFullYear(),
     grado: null,
     curso: null,
     turno: null
@@ -57,7 +58,7 @@ function($scope, $state, NgTableParams, $location, $http, $cookies){
         ctrl.asignacion.id = "";
         ctrl.asignacion.docente = null;
         ctrl.asignacion.curso = null;
-        ctrl.asignacion.anio = "2019";
+        ctrl.asignacion.anio = fechaHoy.getFullYear();
         ctrl.asignacion.grado = null;
         ctrl.asignacion.turno = null;
         swal("¡Bien hecho!", "La asignación fue registrada exitosamente" , "success");
