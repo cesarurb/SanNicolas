@@ -1,8 +1,5 @@
-<!-- Reducir el tamaño del icono (+)  -->
 <section id="main">
-  <div ng-controller="administradorCtrl as ctrl">
     <div class="container">
-
       <div class="row">
         <div class="col">
           <div class="card">
@@ -120,7 +117,7 @@
                         <div class="panel-heading">
                           <span class="fa-stack fa-3x">
                             <i class="fa fa-circle fa-stack-2x text-primary"></i>
-                            <i class="fa fa-th fa-stack-1x fa-inverse"></i>
+                            <i class="fas fa-spell-check fa-stack-1x fa-inverse"></i>
                           </span>
                         </div>
                         <div class="panel-body">
@@ -160,6 +157,29 @@
                   <div class="card">
                     <div class="card-header">
                       <div class="row">
+                        <h3> Gestión de matrículas: </h3>
+                      </div>
+                    </div>
+                    <div class="card-body">
+                      <div class="panel panel-default text-center">
+                        <div class="panel-heading">
+                          <span class="fa-stack fa-3x">
+                            <i class="fa fa-circle fa-stack-2x text-primary"></i>
+                            <i class="fas fa-edit fa-stack-1x fa-inverse"></i>
+                          </span>
+                        </div>
+                        <div class="panel-body">
+                          <h4 class="media-heading">Matrículas</h4>
+                          <a href="" ng-click="AdmCtrl.irGestionarMatricula()" class="btn btn-success"><i class="fa fa-mail-forward"></i>  Entrar</a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-4">
+                  <div class="card">
+                    <div class="card-header">
+                      <div class="row">
                         <h3> Gestión de usuarios: </h3>
                       </div>
                     </div>
@@ -184,9 +204,5 @@
           </div>
         </div>
       </div>
-
-
-
     </div>
-  </div>
 </section>
