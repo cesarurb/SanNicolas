@@ -22,14 +22,12 @@ function($scope, $state, $cookies){
     $state.go('gestionar-usuario');
   }
 
-  // ctrl.irLogin = function() {
-  //   $state.go('login');
-  //   $scope.toggleSidenav();
-  // }
-  //
-  // ctrl.irHome = function() {
-  //   $state.go('home');
-  //   $scope.toggleSidenav();
-  // }
+  ctrl.irGestionarGrado = function() {
+    $state.go('gestionar-grado');
+  }
+
+  ctrl.irGestionarSeccion = function() {
+    $state.go('gestionar-seccion');
+  }
 
 }]);

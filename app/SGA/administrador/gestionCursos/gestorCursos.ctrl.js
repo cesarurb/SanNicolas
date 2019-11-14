@@ -51,10 +51,9 @@ function($scope, $state, NgTableParams, $location, $http, $cookies){
   }
 
   ctrl.agregarCurso = function() {
-    console.log(ctrl.curso);
     $http.get("./app/SGA/administrador/gestionCursos/insertarCurso.php",{params: {nombre: ctrl.curso.nombre, grado: ctrl.curso.grado.id}})
     .then(function (response) {
-      console.log(response);
+      // console.log(response);
       if (response.data == 'HECHO SIN ERRORES') {
         swal("¡Bien hecho!", "El curso fue registrado exitosamente" , "success");
         ctrl.cancelar();

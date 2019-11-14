@@ -9,7 +9,7 @@ SET AUTOCOMMIT=1;
 -- --------------------------------------------------------
 CREATE TABLE `GRADO` (
   `id` VARCHAR(32) PRIMARY KEY,
-  `numeroGrado` int NOT NULL,
+  `numeroGrado` int(1) NOT NULL,
   nivel varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -22,6 +22,31 @@ INSERT INTO `GRADO` VALUES
 ('9a6d96ad-01db-11ea-afdd-e4e749869830',3, 'SECUNDARIA'),
 ('9ea4f72b-01db-11ea-afdd-e4e749869830',4, 'SECUNDARIA'),
 ('a29c371e-01db-11ea-afdd-e4e749869830',5, 'SECUNDARIA');
+
+
+-- --------------------------------------------------------
+-- Estructura de tabla para la tabla `SECCION`
+-- --------------------------------------------------------
+CREATE TABLE `SECCION` (
+  `id` VARCHAR(32) PRIMARY KEY,
+  `seccion` CHAR(1) NOT NULL,
+  `idGrado` VARCHAR(32) NOT NULL,
+  anio CHAR(4) NOT NULL,
+  estado int(1) NOT NULL,
+  FOREIGN KEY (idGrado) REFERENCES GRADO(id)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+-- Volcado de datos para la tabla `SECCION`
+-- --------------------------------------------------------
+INSERT INTO `SECCION` VALUES
+(uuid(), 'A', '920e7df3-01db-11ea-afdd-e4e749869830', '2019', 1),
+(uuid(), 'A', '9620328d-01db-11ea-afdd-e4e749869830', '2019', 1),
+(uuid(), 'A', '9a6d96ad-01db-11ea-afdd-e4e749869830', '2019', 1),
+(uuid(), 'A', '9ea4f72b-01db-11ea-afdd-e4e749869830', '2019', 1),
+(uuid(), 'B', '9ea4f72b-01db-11ea-afdd-e4e749869830', '2019', 1),
+(uuid(), 'A', 'a29c371e-01db-11ea-afdd-e4e749869830', '2019', 1),
+(uuid(), 'B', 'a29c371e-01db-11ea-afdd-e4e749869830', '2019', 1);
 
 
 -- ----------------------------------------------------------
@@ -64,7 +89,7 @@ CREATE TABLE `cuatrimestres` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
--- Estructura de tabla para la tabla `docentes`
+-- Estructura de tabla para la tabla `docente`
 -- --------------------------------------------------------
 CREATE TABLE `docente` (
   `id` VARCHAR(32) PRIMARY KEY,
