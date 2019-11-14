@@ -126,7 +126,26 @@
         </div>
         <div class="card">
           <div class="card-header">
-            <h2>Lista de asignaciones del año</h2>
+            <div class="col-sm-8" style="float: left;">
+              <h2>Lista de asignaciones por año</h2>
+            </div>
+            <div class="col-sm-4" style="float: right;">
+              <div class="form-inline" style="float: right;">
+                <label class="label-letra-prometeo control-label m-t-10 m-b-0 m-r-10">Año: </label>
+                <!-- <div class="col-sm-8"> -->
+                  <div class="fg-line">
+                    <!-- <input class="form-control input-sm" placeholder="Ingrese los nombres del docente" ng-model = "GAsCtrl.docente.nombres" ng-readonly="GAsCtrl.disableDocente"> -->
+                    <div class="select">
+                      <select class="form-control"
+                        ng-model="GAsCtrl.anio"
+                        ng-change="GAsCtrl.cargarAsignaciones()"
+                        ng-options="anio as anio.anio for anio in GAsCtrl.aniosLista">
+                      </select>
+                    </div>
+                  </div>
+                <!-- </div> -->
+              </div>
+            </div>
           </div>
           <div class="card-body">
             <div class="row">

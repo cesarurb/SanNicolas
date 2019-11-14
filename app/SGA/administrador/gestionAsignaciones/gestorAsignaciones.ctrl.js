@@ -22,7 +22,8 @@ function($scope, $state, NgTableParams, $location, $http, $cookies){
   }
 
   ctrl.cargarAsignaciones = function () {
-    $http.get('./app/SGA/administrador/gestionAsignaciones/cargarAsignaciones.php',{params: {}}
+    // console.log(ctrl.anio);
+    $http.get('./app/SGA/administrador/gestionAsignaciones/cargarAsignaciones.php',{params: {anio: ctrl.anio.anio}}
     ).then(function (response) {
       // console.log(response.data)
       try {
@@ -77,6 +78,24 @@ function($scope, $state, NgTableParams, $location, $http, $cookies){
         swal("¡Opss!", "No se pudo eliminar la asignación." , "error");
       }
     });
+  }
+
+  ctrl.obtenerAnios = function () {
+    $http.get('./app/SGA/administrador/gestionAsignaciones/buscarAnios.php',{params: {}}
+    ).then(function (response) {
+      if (response.data.status != 'Error') {
+        try {
+          ctrl.aniosLista = response.data;
+          ctrl.anio = response.data[0];
+          ctrl.cargarAsignaciones();
+        } catch (e) {
+          swal("¡Opss!", "Ocurrió un error." + e , "error");
+        }
+      } else {
+        ctrl.aniosLista = null;
+        swal("¡Opss!", "No se encuentró ninguna asignación para mostrar.", "error");
+      }
+    })
   }
 
   ctrl.obtenerGrados = function () {
@@ -135,7 +154,7 @@ function($scope, $state, NgTableParams, $location, $http, $cookies){
     }
     ctrl.obtenerGrados();
     ctrl.obtenerDocentes();
-    ctrl.cargarAsignaciones();
+    ctrl.obtenerAnios();
   };
 
   ctrl.init();

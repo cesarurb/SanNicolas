@@ -10,18 +10,19 @@ SET AUTOCOMMIT=1;
 CREATE TABLE `GRADO` (
   `id` VARCHAR(32) PRIMARY KEY,
   `numeroGrado` int(1) NOT NULL,
-  nivel varchar(20) NOT NULL
+  nivel varchar(20) NOT NULL,
+  estado int(1) not null
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 -- Volcado de datos para la tabla `GRADO`
 -- --------------------------------------------------------
 INSERT INTO `GRADO` VALUES
-('920e7df3-01db-11ea-afdd-e4e749869830',1, 'SECUNDARIA'),
-('9620328d-01db-11ea-afdd-e4e749869830',2, 'SECUNDARIA'),
-('9a6d96ad-01db-11ea-afdd-e4e749869830',3, 'SECUNDARIA'),
-('9ea4f72b-01db-11ea-afdd-e4e749869830',4, 'SECUNDARIA'),
-('a29c371e-01db-11ea-afdd-e4e749869830',5, 'SECUNDARIA');
+('920e7df3-01db-11ea-afdd-e4e749869830',1, 'SECUNDARIA', 1),
+('9620328d-01db-11ea-afdd-e4e749869830',2, 'SECUNDARIA', 1),
+('9a6d96ad-01db-11ea-afdd-e4e749869830',3, 'SECUNDARIA', 1),
+('9ea4f72b-01db-11ea-afdd-e4e749869830',4, 'SECUNDARIA', 1),
+('a29c371e-01db-11ea-afdd-e4e749869830',5, 'SECUNDARIA', 1);
 
 
 -- --------------------------------------------------------
