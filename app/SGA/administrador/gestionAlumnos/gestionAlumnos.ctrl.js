@@ -1,9 +1,22 @@
-angular.module('mySGAApp').controller("gestorAlumnosCtrl", ['$scope', '$state','NgTableParams', '$location', '$http', '$cookies',
-function($scope, $state, NgTableParams, $location, $http, $cookies){
+angular.module('mySGAApp').controller("gestorAlumnosCtrl", ['$scope', '$state','NgTableParams', '$location', '$http', '$cookies', '$stateParams',
+function($scope, $state, NgTableParams, $location, $http, $cookies, $stateParams){
   var ctrl = this;
   ctrl.disableApoderado = false;
+  ctrl.disableDNI = true;
   ctrl.grupoSanguineoLista = ["A+", "A-", "B+", "B-", "O+", "O-", "AB+", "AB-"];
   ctrl.alumno = [];
+  ctrl.alumnoNuevo = {
+    id: "",
+    dni: "",
+    nombres: "",
+    apellidos: "",
+    nacimiento: null,
+    genero: null,
+    grupoSanguineo: null,
+    correo: "",
+    telefono: "",
+    direccion: ""
+  };
   ctrl.apoderado = {
     id: "",
     dni: null,
@@ -61,6 +74,7 @@ function($scope, $state, NgTableParams, $location, $http, $cookies){
           ctrl.apoderado.telefono = response.data.telefono;
           ctrl.apoderado.direccion = response.data.direccion;
           ctrl.disableApoderado = true;
+          ctrl.disableDNI = true
         } catch (e) {
           swal("¡Opss!", "Ocurrió un error: " + e, "error");
         }
@@ -100,30 +114,40 @@ function($scope, $state, NgTableParams, $location, $http, $cookies){
   // }
 
   ctrl.agregar = function () {
-    $http.get('./app/SGA/administrador/gestionAlumnos/buscarAlumno.php',{params: {dni: ctrl.alumnoNuevo.dni}}
-    ).then(function (response) {
-      if (response.data.status != 'Error') {
-        swal("¡Opss!", "Ya se ha registrado este alumno con ese DNI.", "error");
+    if (ctrl.alumnoNuevo.dni.length == 8 && ctrl.alumnoNuevo.nombres.length > 0 && ctrl.alumnoNuevo.apellidos.length > 0 && ctrl.alumnoNuevo.direccion.length > 0 && ctrl.alumnoNuevo.genero != null && ctrl.alumnoNuevo.grupoSanguineo != null && ctrl.apoderado.id.length > 0) {
+      if (ctrl.alumnoNuevo.correo.length == 0 && ctrl.alumnoNuevo.telefono.length == 0) {
+        ctrl.alumnoNuevo.correo = 'SIN CORREO';
+        ctrl.alumnoNuevo.telefono = 'SIN TELÉFONO';
       } else {
-        $http.get('./app/SGA/administrador/gestionAlumnos/buscarApoderado.php',{params: {dni: ctrl.apoderado.dni}}
+        $http.get('./app/SGA/administrador/gestionAlumnos/buscarAlumno.php',{params: {dni: ctrl.alumnoNuevo.dni}}
         ).then(function (response) {
-          if (response.data.status == 'Error') {
-            try {
-              ctrl.guardarApoderado();
-            } catch (e) {
-              swal("¡Opss!", "Ocurrió un error: " + e, "error");
-            }
+          if (response.data.status != 'Error') {
+            swal("¡Opss!", "Ya se ha registrado este alumno con ese DNI.", "error");
           } else {
-            try {
-              ctrl.apoderado.id = response.data.id;
-              ctrl.guardarAlumno();
-            } catch (e) {
-              swal("¡Opss!", "Ocurrió un error: " + e, "error");
-            }
+            $http.get('./app/SGA/administrador/gestionAlumnos/buscarApoderado.php',{params: {dni: ctrl.apoderado.dni}}
+            ).then(function (response) {
+              if (response.data.status == 'Error') {
+                try {
+                  ctrl.guardarApoderado();
+                } catch (e) {
+                  swal("¡Opss!", "Ocurrió un error: " + e, "error");
+                }
+              } else {
+                try {
+                  ctrl.apoderado.id = response.data.id;
+                  ctrl.guardarAlumno();
+                } catch (e) {
+                  swal("¡Opss!", "Ocurrió un error: " + e, "error");
+                }
+              }
+            })
           }
         })
       }
-    })
+    } else {
+      swal("¡Opss!", "Datos incorrectos, verifique toda la información ingresada ", "error");
+    }
+
   }
 
   ctrl.guardarAlumno = function() {
@@ -135,8 +159,12 @@ function($scope, $state, NgTableParams, $location, $http, $cookies){
     var fecha = ctrl.alumnoNuevo.nacimiento.getFullYear() + '-' + month + '-' + ctrl.alumnoNuevo.nacimiento.getDate();
     $http.get("./app/SGA/administrador/gestionAlumnos/insertarAlumno.php",{params: {dni: ctrl.alumnoNuevo.dni, nombres: ctrl.alumnoNuevo.nombres, apellidos: ctrl.alumnoNuevo.apellidos, correo: ctrl.alumnoNuevo.correo, telefono: ctrl.alumnoNuevo.telefono, direccion: ctrl.alumnoNuevo.direccion, nacimiento: fecha, genero: ctrl.alumnoNuevo.genero, grupoSanguineo: ctrl.alumnoNuevo.grupoSanguineo, apoderado: ctrl.apoderado.id}})
     .then(function (response) {
-      console.log(response);
+      // console.log(response);
       if (response.data == 'HECHO SIN ERRORES') {
+        // console.log(ctrl.alumnoNuevo.correo);
+        if (ctrl.alumnoNuevo.correo == "SIN CORREO") {
+          ctrl.alumnoNuevo.correo = ctrl.alumnoNuevo.dni;
+        }
         ctrl.guardarUsuario();
         // swal("¡Bien hecho!", "El Alumno fue registrado exitosamente" , "success");
       } else {
@@ -172,7 +200,7 @@ function($scope, $state, NgTableParams, $location, $http, $cookies){
     ctrl.apoderado.id = uuidv4();
     $http.get("./app/SGA/administrador/gestionAlumnos/insertarApoderado.php",{params: {id: ctrl.apoderado.id, dni: ctrl.apoderado.dni, nombres: ctrl.apoderado.nombres, apellidos: ctrl.apoderado.apellidos, correo: ctrl.apoderado.correo, telefono: ctrl.apoderado.telefono, direccion: ctrl.apoderado.direccion}})
     .then(function (response) {
-      console.log(response);
+      // console.log(response);
       if (response.data == 'HECHO SIN ERRORES') {
         ctrl.guardarAlumno();
       } else {
@@ -215,20 +243,69 @@ function($scope, $state, NgTableParams, $location, $http, $cookies){
   //   });
   // }
 
-  // ctrl.modificarusuario = function(usuario){
-  //   ctrl.estado = "editar";
-  //   ctrl.titulo = "EDITAR USUARIO"
-  //   ctrl.usuario.id = usuario.id;
-  //   ctrl.usuario.user_name = usuario.name_user;
-  //   ctrl.usuario.empresa = usuario.empresa;
-  //   ctrl.usuario.rol = usuario.rol;
-  //   ctrl.usuario.dni = usuario.dni;
-  //   ctrl.usuario.names = usuario.nombres;
-  //   ctrl.usuario.surname = usuario.apellidos;
-  //   ctrl.usuario.address = usuario.direccion;
-  //   ctrl.usuario.phone = usuario.telefono;
-  //   ctrl.usuario.email = usuario.correo;
-  // }
+  ctrl.modificarAlumno = function(){
+    if (ctrl.alumno.nombres.length > 0 && ctrl.alumno.apellidos.length > 0 && ctrl.alumno.direccion.length > 0 && ctrl.alumno.genero != null && ctrl.alumno.grupoSanguineo != null) {
+      if (ctrl.alumno.correo.length == 0 && ctrl.alumno.telefono.length == 0) {
+        ctrl.alumno.correo = 'SIN CORREO';
+        ctrl.alumno.telefono = 'SIN TELÉFONO';
+      } else {
+        month = ctrl.alumno.nacimiento.getMonth();
+        if (month < 9) {
+          month = parseInt(month) + 1
+          month = '0' + month;
+        }
+        var fecha = ctrl.alumno.nacimiento.getFullYear() + '-' + month + '-' + ctrl.alumno.nacimiento.getDate();
+        $http.get("./app/SGA/administrador/gestionAlumnos/modificarAlumno.php",{params: {id: ctrl.alumno.id, nombres: ctrl.alumno.nombres, apellidos: ctrl.alumno.apellidos, correo: ctrl.alumno.correo, telefono: ctrl.alumno.telefono, direccion: ctrl.alumno.direccion, nacimiento: fecha, genero: ctrl.alumno.genero, grupoSanguineo: ctrl.alumno.grupoSanguineo}})
+        .then(function (response) {
+          if (response.data == 'HECHO SIN ERRORES') {
+            swal("¡Bien hecho!", "El Alumno fue modificado exitosamente" , "success");
+          } else {
+            swal("¡Opss!", "No se pudo modificar el alumno." , "error");
+          }
+        });
+      }
+    } else {
+      swal("¡Opss!", "Datos incorrectos, verifique toda la información ingresada ", "error");
+    }
+  }
+
+  ctrl.modificarApoderado = function () {
+    $http.get('./app/SGA/administrador/gestionAlumnos/buscarApoderado.php',{params: {dni: ctrl.apoderado.dni}}
+    ).then(function (response) {
+      if (response.data.status == 'Error') {
+        try {
+          ctrl.guardarApoderado();
+        } catch (e) {
+          swal("¡Opss!", "Ocurrió un error: " + e, "error");
+        }
+      } else {
+        ctrl.apoderado.id = response.data.id;
+        if (ctrl.disableApoderado == true) {
+          //solo cambiar idApoderado
+          $http.get("./app/SGA/administrador/gestionAlumnos/modificarIdApoderado.php",{params: {id: ctrl.alumno.id, idApoderado: ctrl.apoderado.id}})
+          .then(function (response) {
+            // console.log(response);
+            if (response.data == 'HECHO SIN ERRORES') {
+              swal("¡Bien hecho!", "Se cambió el apoderado del alumno" , "success");
+            } else {
+              swal("¡Opss!", "No se pudo cambiar el apoderado del alumno." , "error");
+            }
+          });
+        } else {
+          //solo cambiar info apoderado
+          $http.get("./app/SGA/administrador/gestionAlumnos/modificarApoderado.php",{params: {id: ctrl.apoderado.id, nombres: ctrl.apoderado.nombres, apellidos: ctrl.apoderado.apellidos, correo: ctrl.apoderado.correo, telefono: ctrl.apoderado.telefono, direccion: ctrl.apoderado.direccion}})
+          .then(function (response) {
+            // console.log(response);
+            if (response.data == 'HECHO SIN ERRORES') {
+              swal("¡Bien hecho!", "La información del apoderado fue modificado exitosamente" , "success");
+            } else {
+              swal("¡Opss!", "No se pudo modificar el apoderado del alumno." , "error");
+            }
+          });
+        }
+      }
+    })
+  }
 
   ctrl.copiarDireccion = function() {
     ctrl.apoderado.direccion = ctrl.alumnoNuevo.direccion;
@@ -243,6 +320,7 @@ function($scope, $state, NgTableParams, $location, $http, $cookies){
     ctrl.apoderado.direccion = "";
     ctrl.apoderado.telefono = "";
     ctrl.disableApoderado = false;
+    ctrl.disableDNI = false;
   }
 
   // ctrl.obtenerEmpresas = function () {
@@ -263,6 +341,41 @@ function($scope, $state, NgTableParams, $location, $http, $cookies){
     }
     ctrl.cargarAlumnos();
   };
+
+  ctrl.cargarInfo = function () {
+    ctrl.alumno.id = $stateParams.idAlumno;
+    $http.get('./app/SGA/administrador/gestionAlumnos/cargarAlumno.php',{params: {id: ctrl.alumno.id}}
+    ).then(function (response) {
+        ctrl.alumno.dni = response.data.dni;
+        ctrl.alumno.nombres = response.data.nombres;
+        ctrl.alumno.apellidos = response.data.apellidos;
+        ctrl.alumno.correo = response.data.correo;
+        ctrl.alumno.telefono = response.data.telefono;
+        ctrl.alumno.direccion = response.data.direccion;
+        ctrl.alumno.grupoSanguineo = response.data.grupoSanguineo;
+        ctrl.alumno.genero = response.data.genero;
+        fechaStr = response.data.nacimiento;
+        yearM = fechaStr.substr(0,4);
+        monthM = fechaStr.substr(5,2);
+        dayM = fechaStr.substr(8,2);
+        ctrl.alumno.nacimiento = new Date(yearM, monthM, dayM);
+        ctrl.apoderado.id = response.data.idApoderado;
+        $http.get('./app/SGA/administrador/gestionAlumnos/cargarApoderado.php',{params: {id: ctrl.apoderado.id}}
+        ).then(function (response) {
+          ctrl.apoderado.dni = response.data.dni;
+          ctrl.apoderado.nombres = response.data.nombres;
+          ctrl.apoderado.apellidos = response.data.apellidos;
+          ctrl.apoderado.correo = response.data.correo;
+          ctrl.apoderado.direccion = response.data.direccion;
+          ctrl.apoderado.telefono = response.data.telefono;
+          ctrl.disableDNI = true;
+        })
+    })
+  }
+
+  ctrl.irEditarAlumno = function(id) {
+    $state.go('editar-alumno', {idAlumno: id});
+  }
 
   ctrl.init();
 
