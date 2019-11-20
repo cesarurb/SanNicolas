@@ -73,6 +73,12 @@ mySGAApp.config(['stateHelperProvider', '$urlRouterProvider', function(stateHelp
             url: '/gestionSeccion',
             templateUrl: 'app/SGA/administrador/gestionSecciones/gestorSecciones.html',
             controller: 'gestorSeccionesCtrl as GSCtrl'
+          },
+          {
+            name: 'gestionar-matricula',
+            url: '/gestionMatricula',
+            templateUrl: 'app/SGA/administrador/gestionMatriculas/gestorMatriculas.html',
+            controller: 'gestorMatriculasCtrl as GMCtrl'
           }
         ]
       },

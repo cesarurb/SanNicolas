@@ -17,7 +17,7 @@ CREATE TABLE `GRADO` (
 -- --------------------------------------------------------
 -- Volcado de datos para la tabla `GRADO`
 -- --------------------------------------------------------
-INSERT INTO `GRADO` VALUES
+INSERT INTO `grado` (`id`, `numeroGrado`, `nivel`, `estado`) VALUES
 ('920e7df3-01db-11ea-afdd-e4e749869830',1, 'SECUNDARIA', 1),
 ('9620328d-01db-11ea-afdd-e4e749869830',2, 'SECUNDARIA', 1),
 ('9a6d96ad-01db-11ea-afdd-e4e749869830',3, 'SECUNDARIA', 1),
@@ -41,14 +41,17 @@ CREATE TABLE `SECCION` (
 -- --------------------------------------------------------
 -- Volcado de datos para la tabla `SECCION`
 -- --------------------------------------------------------
-INSERT INTO `SECCION` VALUES
-(uuid(), 'A', '920e7df3-01db-11ea-afdd-e4e749869830', '2019', 'MAÑANA', 1),
-(uuid(), 'A', '9620328d-01db-11ea-afdd-e4e749869830', '2019', 'MAÑANA', 1),
-('64a15e02-0698-11ea-9378-e4e74986', 'A', '9a6d96ad-01db-11ea-afdd-e4e749869830', '2019', 'MAÑANA', 1),
-(uuid(), 'A', '9ea4f72b-01db-11ea-afdd-e4e749869830', '2019', 'MAÑANA', 1),
-(uuid(), 'B', '9ea4f72b-01db-11ea-afdd-e4e749869830', '2019', 'TARDE', 1),
-(uuid(), 'A', 'a29c371e-01db-11ea-afdd-e4e749869830', '2019', 'MAÑANA', 1),
-(uuid(), 'B', 'a29c371e-01db-11ea-afdd-e4e749869830', '2019', 'TARDE', 1);
+INSERT INTO `seccion` (`id`, `seccion`, `idGrado`, `anio`, `turno`, `estado`) VALUES
+('4edbbfa7-0bb0-11ea-81c6-e4e74986', 'A', '920e7df3-01db-11ea-afdd-e4e74986', '2019', 'MAÑANA', 1),
+('4ee28f37-0bb0-11ea-81c6-e4e74986', 'A', '9620328d-01db-11ea-afdd-e4e74986', '2019', 'MAÑANA', 1),
+('4ee29322-0bb0-11ea-81c6-e4e74986', 'A', '9ea4f72b-01db-11ea-afdd-e4e74986', '2019', 'MAÑANA', 1),
+('4ee29453-0bb0-11ea-81c6-e4e74986', 'B', '9ea4f72b-01db-11ea-afdd-e4e74986', '2019', 'TARDE', 1),
+('4ee29579-0bb0-11ea-81c6-e4e74986', 'A', 'a29c371e-01db-11ea-afdd-e4e74986', '2019', 'MAÑANA', 1),
+('4ee29c0f-0bb0-11ea-81c6-e4e74986', 'B', 'a29c371e-01db-11ea-afdd-e4e74986', '2019', 'TARDE', 1),
+('64a15e02-0698-11ea-9378-e4e74986', 'A', '9a6d96ad-01db-11ea-afdd-e4e74986', '2019', 'MAÑANA', 1);
+
+
+-- --------------------------------------------------------
 
 
 -- ----------------------------------------------------------
@@ -66,12 +69,14 @@ CREATE TABLE `CURSO` (
 -- --------------------------------------------------------
 -- Volcado de datos para la tabla `CURSO`
 -- --------------------------------------------------------
-INSERT INTO `CURSO` VALUES
-('64e6d199-0698-11ea-9378-e4e74986', 'MATEMÁTICAS','a29c371e-01db-11ea-afdd-e4e74986', NULL, 1),
-(uuid(), 'MATEMÁTICAS','920e7df3-01db-11ea-afdd-e4e74986', NULL, 1),
-(uuid(), 'MATEMÁTICAS','9620328d-01db-11ea-afdd-e4e74986', NULL, 1),
-(uuid(), 'MATEMÁTICAS','9a6d96ad-01db-11ea-afdd-e4e74986', NULL, 1),
-(uuid(), 'MATEMÁTICAS','9ea4f72b-01db-11ea-afdd-e4e74986', NULL, 1);
+INSERT INTO `curso` (`id`, `nombre`, `idGrado`, `planDeEstudio`, `Estado`) VALUES
+('4f3f7375-0bb0-11ea-81c6-e4e74986', 'MATEMÁTICAS', '920e7df3-01db-11ea-afdd-e4e74986', NULL, 1),
+('4f3f7608-0bb0-11ea-81c6-e4e74986', 'MATEMÁTICAS', '9620328d-01db-11ea-afdd-e4e74986', NULL, 1),
+('4f3f776e-0bb0-11ea-81c6-e4e74986', 'MATEMÁTICAS', '9a6d96ad-01db-11ea-afdd-e4e74986', NULL, 1),
+('4f3f7896-0bb0-11ea-81c6-e4e74986', 'MATEMÁTICAS', '9ea4f72b-01db-11ea-afdd-e4e74986', NULL, 1),
+('64e6d199-0698-11ea-9378-e4e74986', 'MATEMÁTICAS', 'a29c371e-01db-11ea-afdd-e4e74986', NULL, 1),
+('ca17bfd8-0bc6-11ea-81c6-e4e74986', 'COMUNICACIÓN', '920e7df3-01db-11ea-afdd-e4e74986', NULL, 1),
+('efdc09b4-0bc6-11ea-81c6-e4e74986', 'COMUNICACIÓN', '9620328d-01db-11ea-afdd-e4e74986', NULL, 1);
 
 
 -- --------------------------------------------------------
@@ -112,8 +117,8 @@ CREATE TABLE `docente` (
 -- --------------------------------------------------------
 -- Volcado de datos para la tabla `docentes`
 -- --------------------------------------------------------
-INSERT INTO `docente` VALUES
-('65d37ef3-0698-11ea-9378-e4e74986', '12345678','JORGE', 'AZABACHE', 'SIN CÉDULA', 'jorgeazabache@hotmai.com', '987654321', 'AV. SU CASA', '1998-04-27', 'MASCULINO', NOW(), 1);
+INSERT INTO `docente` (`id`, `dni`, `nombres`, `apellidos`, `cedula`, `correo`, `telefono`, `direccion`, `nacimiento`, `genero`, `ingreso`, `Estado`) VALUES
+('65d37ef3-0698-11ea-9378-e4e74986', '12345678', 'JORGE', 'AZABACHE', 'SIN CÉDULA', 'jorgeazabache@hotmai.com', '987654321', 'AV. SU CASA', '1998-04-27', 'MASCULINO', '2019-11-20', 1);
 
 
 -- --------------------------------------------------------
@@ -133,7 +138,11 @@ CREATE TABLE `ASIGNACION` (
   foreign key (idCurso) REFERENCES CURSO(id)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
-insert into asignacion values (uuid(), '65d37ef3-0698-11ea-9378-e4e74986', '64e6d199-0698-11ea-9378-e4e74986', '2019', '64a15e02-0698-11ea-9378-e4e74986', 1);
+--
+-- Volcado de datos para la tabla `asignacion`
+--
+INSERT INTO `asignacion` (`id`, `idDocente`, `idCurso`, `anio`, `idSeccion`, `estado`) VALUES
+('50468f0f-0bb0-11ea-81c6-e4e74986', '65d37ef3-0698-11ea-9378-e4e74986', '64e6d199-0698-11ea-9378-e4e74986', '2019', '64a15e02-0698-11ea-9378-e4e74986', 1);
 
 
 -- --------------------------------------------------------
@@ -168,7 +177,8 @@ CREATE TABLE `apoderado` (
 -- --------------------------------------------------------
 -- Volcado de datos para la tabla `apoderado`
 -- --------------------------------------------------------
-INSERT INTO `apoderado` VALUES
+INSERT INTO `apoderado` (`id`, `dni`, `nombres`, `apellidos`, `correo`, `telefono`, `direccion`, `Estado`) VALUES
+('4d56b13f-d2f5-48ad-bfa2-d7c8186f', '18132274', 'JACQUELINE YULIANA', 'NARRO VARGAS', 'jymnv73@hotmail.com', '961967672', 'URB. ROSALES DE STA. INÉS B-6', 1),
 ('7afe7e9c-011b-11ea-afdd-e4e74986', '12345678', 'Jorge Luis', 'Azabache Noriega', 'jorgeazabache@hotmai.com', '99999999', 'SU CASA', 1),
 ('7afe8d2f-011b-11ea-afdd-e4e74986', '87654321', 'Jorge', 'Azabache', 'jorgeazabache@hotmai.com', '987654321', 'SU CASA', 1);
 
@@ -177,7 +187,7 @@ INSERT INTO `apoderado` VALUES
 -- Estructura de tabla para la tabla `ALUMNO`
 -- --------------------------------------------------------
 CREATE TABLE `ALUMNO` (
-  `id` VARCHAR(32) NOT NULL,
+  `id` VARCHAR(32) PRIMARY KEY,
   `dni` VARCHAR(8) NOT NULL,
   `nombres` varchar(50) NOT NULL,
   `apellidos` varchar(50) NOT NULL,
@@ -194,8 +204,13 @@ CREATE TABLE `ALUMNO` (
   foreign key (idApoderado) references apoderado(id)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
-insert into alumno values 
-(uuid(), '87654321','LUIS', 'TIRADO', 'ltirado@unitru.edu.pe', '987654321', 'depa', '1998-04-27', 'MASCULINO', 'O+','7afe7e9c-011b-11ea-afdd-e4e74986', NOW(), 1);
+--
+-- Volcado de datos para la tabla `alumno`
+--
+INSERT INTO `alumno` (`id`, `dni`, `nombres`, `apellidos`, `correo`, `telefono`, `direccion`, `nacimiento`, `genero`, `grupoSanguineo`, `idApoderado`, `ingreso`, `Estado`) VALUES
+('5122031c-0bb0-11ea-81c6-e4e74986', '87654321', 'LUIS', 'TIRADO', 'ltirado@unitru.edu.pe', '987654321', 'depa', '1998-04-27', 'MASCULINO', 'O+', '7afe7e9c-011b-11ea-afdd-e4e74986', '2019-11-20', 1),
+('6c1d72fa-0bb0-11ea-81c6-e4e74986', '74521668', 'ARNALDO', 'URBINA NARRO', 'c.arnaldo@gmail.com', 'SIN TELÉF', 'URB. ROSALES DE STA. INÉS', '2004-11-03', 'MASCULINO', 'O-', '4d56b13f-d2f5-48ad-bfa2-d7c8186f', '2019-11-20', 1),
+('d519c285-0bb6-11ea-81c6-e4e74986', '74381352', 'ALONSO', 'URBINA NARRO', 'SIN CORREO', 'SIN TELÉF', 'URB. ROSALES DE STA. INÉS', '2010-09-06', 'MASCULINO', 'O+', '4d56b13f-d2f5-48ad-bfa2-d7c8186f', '2019-11-20', 1);
 
 
 -- --------------------------------------------------------
@@ -230,11 +245,17 @@ CREATE TABLE `inscripciones_asignaturas` (
 -- Estructura de tabla para la tabla `matricula`
 -- --------------------------------------------------------
 CREATE TABLE `MATRICULA` (
-  `id` VARCHAR(32) NOT NULL,
+  `id` VARCHAR(32) PRIMARY KEY,
   `idAlumno` VARCHAR(32) NOT NULL,
-  `idSeccion` VARCHAR(32) NOT NULL,
+  `idGrado` VARCHAR(32) NOT NULL,
+  `idSeccion` VARCHAR(32) NULL,
   `anio` CHAR(4) NOT NULL,
-  `fechaMatricula` date NOT NULL
+  `asignado` int(1) NOT NULL,
+  `fechaMatricula` date NOT NULL,
+  `estado` int(1) NOT NULL,
+  foreign key (idAlumno) REFERENCES ALUMNO(id),
+  foreign key (idGrado) REFERENCES GRADO(id),
+  foreign key (idSeccion) REFERENCES SECCION(id)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 
@@ -325,7 +346,9 @@ CREATE TABLE `usuario` (
 -- --------------------------------------------------------
 -- Volcado de datos para la tabla `usuario`
 -- --------------------------------------------------------
-INSERT INTO `usuario` VALUES
-(uuid(),'ADMIN', '123', 'b1f27357-018e-11ea-afdd-e4e74986', 'ADMIN', 'ADMIN', '00000000', 1),
-(uuid(), 'Jorge', '123', 'b1f565d0-018e-11ea-afdd-e4e74986', 'JORGE', 'AZABACHE', '12345678', 1),
-(uuid(), 'Lusho', '123', 'b1f56711-018e-11ea-afdd-e4e74986', 'LUIS', 'TIRADO', '87654321', 1);
+INSERT INTO `usuario` (`id`, `NombreUsuario`, `PassUsuario`, `idRol`, `Nombres`, `Apellidos`, `dni`, `estado`) VALUES
+('533ead6b-0bb0-11ea-81c6-e4e74986', 'ADMIN', '123', 'b1f27357-018e-11ea-afdd-e4e74986', 'ADMIN', 'ADMIN', '00000000', 1),
+('5340cef3-0bb0-11ea-81c6-e4e74986', 'Jorge', '123', 'b1f565d0-018e-11ea-afdd-e4e74986', 'JORGE', 'AZABACHE', '12345678', 1),
+('5340d1d9-0bb0-11ea-81c6-e4e74986', 'Lusho', '123', 'b1f56711-018e-11ea-afdd-e4e74986', 'LUIS', 'TIRADO', '87654321', 1),
+('6c33128d-0bb0-11ea-81c6-e4e74986', 'cesar.arnaldo@gmail.com', '74521668', 'b1f56711-018e-11ea-afdd-e4e74986', 'ARNALDO', 'URBINA NARRO', '74521668', 1),
+('d5348047-0bb6-11ea-81c6-e4e74986', '74381352', '74381352', 'b1f56711-018e-11ea-afdd-e4e74986', 'ALONSO', 'URBINA NARRO', '74381352', 1);

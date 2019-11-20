@@ -30,4 +30,8 @@ function($scope, $state, $cookies){
     $state.go('gestionar-seccion');
   }
 
+  ctrl.irGestionarMatricula = function() {
+    $state.go('gestionar-matricula');
+  }
+
 }]);
