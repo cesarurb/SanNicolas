@@ -47,6 +47,7 @@ function($scope, $state, NgTableParams, $location, $http, $cookies){
     .then(function (response) {
       // console.log(response);
       if (response.data == 'HECHO SIN ERRORES') {
+        ctrl.cargarGrados();
         swal("¡Bien hecho!", "El grado fue registrado exitosamente" , "success");
         ctrl.cancelar();
       } else {

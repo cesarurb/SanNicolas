@@ -61,6 +61,7 @@ function($scope, $state, NgTableParams, $location, $http, $cookies){
         ctrl.asignacion.anio = fechaHoy.getFullYear();
         ctrl.asignacion.grado = null;
         ctrl.asignacion.turno = null;
+        ctrl.obtenerAnios();
         swal("¡Bien hecho!", "La asignación fue registrada exitosamente" , "success");
       } else {
         swal("¡Opss!", "No se pudo registrar la asignación." , "error");

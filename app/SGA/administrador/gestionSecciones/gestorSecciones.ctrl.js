@@ -57,6 +57,7 @@ function($scope, $state, NgTableParams, $location, $http, $cookies){
     .then(function (response) {
       // console.log(response);
       if (response.data == 'HECHO SIN ERRORES') {
+        ctrl.obtenerAnios();
         swal("¡Bien hecho!", "La sección fue registrada exitosamente" , "success");
         ctrl.cancelar();
       } else {

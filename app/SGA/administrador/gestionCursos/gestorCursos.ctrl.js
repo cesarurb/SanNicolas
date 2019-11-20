@@ -57,6 +57,7 @@ function($scope, $state, NgTableParams, $location, $http, $cookies){
       if (response.data == 'HECHO SIN ERRORES') {
         swal("¡Bien hecho!", "El curso fue registrado exitosamente" , "success");
         ctrl.cancelar();
+        ctrl.buscarCursos();
       } else {
         swal("¡Opss!", "No se pudo registrar el curso." , "error");
       }

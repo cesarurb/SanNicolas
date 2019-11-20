@@ -59,6 +59,7 @@ function($scope, $state, NgTableParams, $location, $http, $cookies){
     .then(function (response) {
       // console.log(response);
       if (response.data == 'HECHO SIN ERRORES') {
+        ctrl.buscarDocentes();
         ctrl.agregarUsuario()
       } else {
         swal("¡Opss!", "No se pudo registrar el docente." , "error");
@@ -98,6 +99,7 @@ function($scope, $state, NgTableParams, $location, $http, $cookies){
       // console.log(ctrl.docente);
       if (response.data == 'HECHO SIN ERRORES') {
         ctrl.cancelar();
+        ctrl.buscarDocentes();
         swal("¡Bien hecho!", "La información del docente fue modificado exitosamente" , "success");
       } else {
         swal("¡Opss!", "No se pudo modificar la información del docente." , "error");

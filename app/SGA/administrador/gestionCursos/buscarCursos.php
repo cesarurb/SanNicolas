@@ -10,7 +10,7 @@
   // $username = mysqli_real_escape_string($con, $data->username);
 
   $tildes = $con->query("SET NAMES 'utf8'"); //Para que se muestren las tildes correctamente
-  $query = "select CURSO.id, CURSO.nombre, CURSO.idGrado, concat(GRADO.numeroGrado,'° ',GRADO.nivel) as nombreGrado FROM CURSO INNER JOIN GRADO ON CURSO.idGRADO = GRADO.id WHERE estado = 1";
+  $query = "select CURSO.id, CURSO.nombre, CURSO.idGrado, concat(GRADO.numeroGrado,'° ',GRADO.nivel) as nombreGrado FROM CURSO INNER JOIN GRADO ON CURSO.idGRADO = GRADO.id WHERE GRADO.estado = 1";
   //
   $result = mysqli_query($con, $query) or die ( "Algo ha ido mal en la consulta a la base de datos");
   // //

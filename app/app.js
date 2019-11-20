@@ -33,6 +33,12 @@ mySGAApp.config(['stateHelperProvider', '$urlRouterProvider', function(stateHelp
             controller: 'gestorAlumnosCtrl as GACtrl',
           },
           {
+            name: 'editar-alumno',
+            url: '/editarAlumno/:idAlumno',
+            templateUrl: 'app/SGA/administrador/gestionAlumnos/editarAlumno.html',
+            controller: 'gestorAlumnosCtrl as GACtrl',
+          },
+          {
             name: 'gestionar-docente',
             url: '/gestionDocente',
             templateUrl: 'app/SGA/administrador/gestionDocentes/gestorDocentes.html',
